@@ -357,6 +357,7 @@
 	</dependencyManagement>
 
 	<build>
+	 <pluginManagement>
 		<plugins>
 			<!-- compiler插件, 设定JDK版本 -->
 			<plugin>
@@ -514,6 +515,7 @@
 				<version>1.7</version>
 			</plugin>
 		</plugins>
+		 </pluginManagement>
 	</build>
 
 	<profiles>
