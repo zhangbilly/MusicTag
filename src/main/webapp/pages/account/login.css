@@ -1,0 +1,9 @@
+.vertical-center{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body {
+	background: url('../../static/images/backgrounds/1.jpg') no-repeat center center fixed;
+}
