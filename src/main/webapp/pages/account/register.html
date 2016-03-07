@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="RegisterModule">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="renderer" content="webkit">
+  <title>注册</title>
+
+  <!-- Bootstrap -->
+  <link href="../../static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../static/css/common.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body  ng-controller="RegisterController">
+  <div class="container vertical-center">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 panel panel-default">
+        <div id="messages" ng-show="message">{{ message }}</div>
+        <form name="registerForm" class="form-horizontal" ng-submit="processForm()" novalidate>
+          <h1 class="text-center">注册</h1>
+          <div class="form-group">
+            <label for="loginName" class="col-md-2 control-label">用&nbsp;户&nbsp;名</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="loginName" placeholder="请输入用户名" ng-model="formData.loginName" required ng-minlength="3" ng-maxlength="8">
+              <span class="help-block" ng-show="errorName">{{ errorName }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="userName" class="col-md-2 control-label">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="userName" placeholder="请输入昵称" ng-model="formData.userName" required ng-minlength="3" ng-maxlength="8">
+              <span class="help-block" ng-show="errorName">{{ errorName }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pw1" class="col-md-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" id="plainPassword" name="plainPassword" placeholder="请输入密码" ng-model="formData.plainPassword" required>
+              <span class="help-block" ng-show="errorName">{{ errorName }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pw2" class="col-md-2 control-label">确认密码</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" id="confirmPassword" name = "confirmPassword" placeholder="请再次输入密码" ng-model="formData.confirmPassword" required pw-check="plainPassword">
+              <span class="help-block" ng-show="errorName">{{ errorName }}</span>
+            </div>
+
+            <span class="msg-error" ng-show="registerForm.confirmPassword.$error.pwmatch">Passwords don't match.</span>
+
+          </div>
+          <div ng-show="!registerForm.confirmPassword.$pristine && tagName.confirmPassword.$valid">
+            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+          </div>
+          <div ng-show="!registerForm.confirmPassword.$pristine && registerForm.confirmPassword.$invalid">
+            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+          </div>
+          <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+              <button type="submit" class="btn btn-default" ng-disabled="registerForm.$invalid">
+                <span class="glyphicon glyphicon-flash"></span>
+                Sign in
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <!-- //main content --> </div>
+    <!-- //row --> </div>
+  <!-- //container -->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="../../static/jquery/jquery-2.2.0.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../../static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+  <script src="../../static/angular-1.3.9/angular.js"></script>
+  <script src="register.js"></script>
+</body>
+</html>
