@@ -1,0 +1,7 @@
+.hidewithspace{
+	display: block;
+	visibility:hidden;
+}
+body {
+	background: url('../images/backgrounds/registerimg.jpg') no-repeat center center fixed;
+}
