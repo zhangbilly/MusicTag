@@ -1,4 +1,4 @@
-package com.zworks.musictag.web.account;
+package com.zworks.musictag.web.controller.account;
 
 import javax.validation.Valid;
 
@@ -16,11 +16,11 @@ import com.zworks.musictag.service.AccountService;
 public class RegisterController {
 	@Autowired
 	private AccountService accountService;
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String register(@Valid User user, RedirectAttributes redirectAttributes) {
 		accountService.registerUser(user);
-		redirectAttributes.addFlashAttribute("username", user.getLoginName());
-		return "redirect:/login";
+		redirectAttributes.addFlashAttribute(User.LOGINNAME, user.getLoginName());
+		return "redirect:account/login";
 	}
 }
