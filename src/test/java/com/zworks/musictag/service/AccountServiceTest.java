@@ -6,7 +6,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import static org.assertj.core.api.Assertions.*;
-import com.zworks.musictag.UserData;
+
+import com.zworks.musictag.data.UserData;
 import com.zworks.musictag.entity.User;
 
 @TransactionConfiguration(defaultRollback=false)

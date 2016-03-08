@@ -1,4 +1,4 @@
-package com.zworks.musictag;
+package com.zworks.musictag.data;
 
 import org.springside.modules.test.data.RandomData;
 
