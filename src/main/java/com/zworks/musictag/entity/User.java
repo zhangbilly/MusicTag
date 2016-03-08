@@ -36,6 +36,7 @@ public class User extends IdEntity {
 	private String phone;
 	private String plainPassword;
 
+	public static final String ID = "id";
 	public static final String LOGINNAME = "loginName";
 	public static final String USERNAME = "userName";
 	public static final String PASSWORD = "password";

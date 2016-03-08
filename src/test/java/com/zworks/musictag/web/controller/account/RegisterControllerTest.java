@@ -49,4 +49,14 @@ public class RegisterControllerTest {
 		// user.getLoginName())).andExpect(status().isOk())
 		// .andExpect(flash().attributeCount(1));
 	}
+
+	@Test
+	public void testGetRegisterPage() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/musictag/register")).andExpect(status().isOk())
+				.andDo(MockMvcResultHandlers.print());
+		// .andExpect(view().name("redirect:/musictag/account/login"))
+		// .andExpect(flash().attribute(User.LOGINNAME,
+		// user.getLoginName())).andExpect(status().isOk())
+		// .andExpect(flash().attributeCount(1));
+	}
 }
