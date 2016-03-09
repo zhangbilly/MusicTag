@@ -74,6 +74,7 @@
 							<input type="password" class="form-control" id="plainPassword"
 								name="plainPassword" placeholder="请输入密码"
 								ng-model="formData.plainPassword" required  ng-minlength="6" ng-maxlength="18" ng-pattern="/^[a-zA-Z0-9]{6,16}$/">
+								<ul id="strength" check-strength="formData.plainPassword"></ul>
 							<div ng-show="!registerForm.plainPassword.$pristine && registerForm.plainPassword.$valid">
 								<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 							</div>
@@ -81,6 +82,7 @@
 							<div ng-show="!registerForm.plainPassword.$pristine && registerForm.plainPassword.$invalid">
 								<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 							</div>
+
 							<span
 								class="help-block" ng-class={'hidewithspace':!registerForm.plainPassword.$pristine&&registerForm.plainPassword.$valid}>6-18位，可使用字母、数字</span>
 						</div>
