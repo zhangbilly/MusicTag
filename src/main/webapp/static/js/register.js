@@ -1,8 +1,10 @@
 var registerUrl = "/register";
 MusicTag.controller('RegisterController',function($scope,$http,$window,encryptService){
 	$scope.formData={};
+	$scope.result={};
 	$scope.ctx = ctx;
 	$scope.processForm = function(){
+		$scope.result={};
 		$scope.data = angular.copy($scope.formData);
 		$scope.data.plainPassword = encryptService.encrypt($scope.data.plainPassword);
 		$scope.data.confirmPassword = $scope.data.plainPassword;
@@ -16,7 +18,7 @@ MusicTag.controller('RegisterController',function($scope,$http,$window,encryptSe
 			if(data.status){
 				$window.location.href = ctx+data.url;
 			}else{
-				alert(data.msg);
+				$scope.result = data;
 			}
 		})
 	};

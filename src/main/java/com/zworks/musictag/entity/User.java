@@ -76,7 +76,6 @@ public class User extends IdEntity {
 	}
 
 	@JsonIgnore
-	@Pattern(regexp = Validate.REGEX_PASSWORDWITHBLANK, message = "{User.password.constraints.Pattern.message}")
 	public String getPassword() {
 		return password;
 	}

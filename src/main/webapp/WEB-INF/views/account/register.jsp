@@ -49,6 +49,7 @@
 							</div>
 
 							<span id="helpBlock" ng-class={'hidewithspace':!registerForm.loginName.$pristine&&registerForm.loginName.$valid} class="help-block">2~18个字符，可使用字母、数字、下划线，需以字母开头</span>
+							<span id="helpBlock" class="help-block">{{result.error_loginName}}</span>
 						</div>
 					</div>
 					<div class="form-group  has-feedback">

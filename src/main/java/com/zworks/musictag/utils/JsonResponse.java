@@ -33,6 +33,15 @@ public class JsonResponse extends HashMap<String, Object> {
 		put(MESSAGE, msg);
 	}
 
+	public JsonResponse failedWithReturn() {
+		put(STATUS, FAILED);
+		return this;
+	}
+
+	public void failed() {
+		put(STATUS, FAILED);
+	}
+
 	public JsonResponse failedWithReturn(String msg) {
 		put(STATUS, FAILED);
 		put(MESSAGE, msg);

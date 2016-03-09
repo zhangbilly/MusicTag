@@ -5,10 +5,14 @@
  *******************************************************************************/
 package com.zworks.musictag.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.zworks.musictag.entity.User;
 
 public interface UserDao extends PagingAndSortingRepository<User, Long> {
 	User findByLoginName(String loginName);
+
+	@Query("select count(1) from User u where u.loginName = ?1")
+	long getCountByLoginName(String loginName);
 }
