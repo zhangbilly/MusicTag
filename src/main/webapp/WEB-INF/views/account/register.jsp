@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html lang="zh-CN" ng-app="RegisterModule">
+<html lang="zh-CN" ng-app="MusicTag">
 <head>
 
 	<meta charset="utf-8">
@@ -31,7 +31,6 @@
 		<script>var ctx = "${ctx}";</script>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 panel panel-default">
-				<div id="messages" ng-show="message">{{ message }}</div>
 				<form name="registerForm" id = "registerForm" class="form-horizontal"
 					ng-submit="processForm()" novalidate>
 					<h1 class="text-center">注册</h1>
@@ -134,6 +133,8 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 	<script src="${ctx}/static/angular-1.3.9/angular.js"></script>
+	<script src="${ctx}/static/js/services.js"></script>
 	<script src="${ctx}/static/js/register.js"></script>
+	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
 </body>
 </html>
