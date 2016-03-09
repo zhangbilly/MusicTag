@@ -6,10 +6,12 @@ package com.zworks.musictag.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zworks.musictag.utils.Validate;
 
 /**
  * @Description:
@@ -53,7 +55,8 @@ public class User extends IdEntity {
 	public static final String PHONE = "phone";
 	public static final String PLAINPASSWORD = "plainPassword";
 
-	@NotBlank
+	@NotBlank(message = "{User.loginName.constraints.NotBlank.message}")
+	@Pattern(regexp = Validate.REGEX_LOGINNAMEWITHBLANK, message = "{User.loginName.constraints.Pattern.message}")
 	public String getLoginName() {
 		return loginName;
 	}
@@ -62,7 +65,8 @@ public class User extends IdEntity {
 		this.loginName = loginName;
 	}
 
-	@NotBlank
+	@NotBlank(message = "{User.userName.constraints.NotBlank.message}")
+	@Pattern(regexp = Validate.REGEX_USERNAMEWITHBLANK, message = "{User.userName.constraints.Pattern.message}")
 	public String getUserName() {
 		return userName;
 	}
@@ -72,6 +76,7 @@ public class User extends IdEntity {
 	}
 
 	@JsonIgnore
+	@Pattern(regexp = Validate.REGEX_PASSWORDWITHBLANK, message = "{User.password.constraints.Pattern.message}")
 	public String getPassword() {
 		return password;
 	}
