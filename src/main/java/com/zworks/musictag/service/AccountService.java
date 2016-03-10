@@ -1,5 +1,7 @@
 package com.zworks.musictag.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springside.modules.security.utils.Digests;
@@ -16,6 +18,8 @@ public class AccountService {
 	public static final String HASH_ALGORITHM = "SHA-1";
 	public static final int HASH_INTERATIONS = 1024;
 	private static final int SALT_SIZE = 8;
+
+	private static Logger logger = LoggerFactory.getLogger(AccountService.class);
 
 	@Autowired
 	private UserDao userDao;
@@ -44,5 +48,9 @@ public class AccountService {
 			json.put(Constants.ERRORPREFIX + User.LOGINNAME, "用户名已经存在");
 			json.failed();
 		}
+	}
+
+	public User findUserByLoginName(String username) {
+		return userDao.findByLoginName(username);
 	}
 }

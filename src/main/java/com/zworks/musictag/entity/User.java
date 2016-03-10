@@ -3,7 +3,14 @@
  */
 package com.zworks.musictag.entity;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
@@ -37,6 +44,7 @@ public class User extends IdEntity {
 	private String email;
 	private String phone;
 	private String plainPassword;
+	private List<Role> roleList;
 
 	public static final String ID = "id";
 	public static final String LOGINNAME = "loginName";
@@ -181,5 +189,26 @@ public class User extends IdEntity {
 
 	public void setPlainPassword(String plainPassword) {
 		this.plainPassword = plainPassword;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "role_id") })
+	public List<Role> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
+
+	@Transient
+	public Set<String> getRolesName() {
+		List<Role> roleList = getRoleList();
+		Set<String> set = new HashSet<String>();
+		for (Role r : roleList) {
+			set.add(r.getRoleName());
+		}
+		return set;
 	}
 }
