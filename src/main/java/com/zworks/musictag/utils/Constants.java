@@ -10,4 +10,5 @@ package com.zworks.musictag.utils;
  **/
 public class Constants {
 	public static final String ERRORPREFIX = "error_";
+	public static final String URL = "url";
 }

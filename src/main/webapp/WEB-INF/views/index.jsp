@@ -19,7 +19,6 @@
 	<!-- Bootstrap -->
 	<link href="${ctx}/static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/common.css" rel="stylesheet">
-	<link href="${ctx}/static/css/login.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,46 +30,7 @@
 <body ng-controller="LoginFormController">
 	<script>var ctx = "${ctx}";</script>
 	<div class="container vertical-center">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 panel panel-default">
-				<div id="messages" ng-show="message">{{ message }}</div>
-				<form name="loginForm" class="form-horizontal" ng-submit="processForm()" novalidate>
-					<h1 class="text-center">登录</h1>
-					<div class="form-group">
-						<label for="userName" class="col-md-2 control-label">用户名</label>
-						<div class="col-md-9">
-							<input type="text" class="form-control" id="userName" placeholder="请输入用户名" ng-model="formData.username" required ng-minlength="2" ng-maxlength="18">
-							<span class="help-block" ng-show="errorName">{{ errorName }}</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="password" class="col-md-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-						<div class="col-md-9">
-							<input type="password" class="form-control" id="password" placeholder="请输入密码" ng-model="formData.password" required>
-							<span class="help-block" ng-show="errorName">{{ errorName }}</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id="rememberMe" name="rememberMe" ng-model="formData.rememberme">记住我</label>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<button type="submit" class="btn btn-default" ng-disabled="loginForm.$invalid">
-								<span class="glyphicon glyphicon-flash"></span>
-								Sign in
-							</button>
-						</div>
-					</div>
-				</form>
-
-			</div>
-			<!-- //main content -->
-		</div>
+		index
 		<!-- //row -->
 	</div>
 	<!-- //container -->
