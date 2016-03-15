@@ -63,6 +63,13 @@ public class User extends IdEntity {
 	public static final String PHONE = "phone";
 	public static final String PLAINPASSWORD = "plainPassword";
 
+	public User() {
+	}
+
+	public User(Long id) {
+		this.id = id;
+	}
+
 	@NotBlank(message = "{User.loginName.constraints.NotBlank.message}")
 	@Pattern(regexp = Validate.REGEX_LOGINNAMEWITHBLANK, message = "{User.loginName.constraints.Pattern.message}")
 	public String getLoginName() {
