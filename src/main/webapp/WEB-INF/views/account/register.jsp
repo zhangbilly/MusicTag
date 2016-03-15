@@ -137,6 +137,7 @@
 	<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 	<script src="${ctx}/static/angular-1.3.9/angular.js"></script>
 	<script src="${ctx}/static/js/services.js"></script>
+	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
 	<script src="${ctx}/static/js/register.js"></script>
 	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
 </body>

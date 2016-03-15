@@ -1,4 +1,4 @@
-var MusicTag = angular.module("MusicTag",[]);
+var MusicTag = angular.module("MusicTag",['ui.router']);
 MusicTag.service('encryptService', function(){
 	this.encrypt = function(string){
 		var shaObj = new jsSHA("SHA-1", "TEXT");
