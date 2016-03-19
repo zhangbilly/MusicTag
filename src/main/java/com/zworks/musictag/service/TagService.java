@@ -3,6 +3,8 @@ package com.zworks.musictag.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.NonUniqueResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -68,5 +70,14 @@ public class TagService {
 		Map<String, SearchFilter> filters =  Maps.newHashMap();
 		Specification<Tag> spec = DynamicSpecifications.bySearchFilter(filters.values(), Tag.class);
 		return spec;
+	}
+
+	/**
+	 * 根据标签名获取标签
+	 * @param tagName
+	 * @return
+	 */
+	public Tag getTagByName(String tagName) throws NonUniqueResultException {
+		return tagDao.findByName(tagName);
 	}
 }

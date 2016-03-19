@@ -22,6 +22,7 @@ public class Song extends IdEntity{
 	private String songName;
 	private Singer singer;
 	private Album album;
+	private String duration;
 	@NotBlank
 	public String getSongName() {
 		return songName;
@@ -47,7 +48,11 @@ public class Song extends IdEntity{
 	public void setAlbum(Album album) {
 		this.album = album;
 	}
-	
-	
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
 
 }

@@ -4,6 +4,7 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService){
 	$scope.formData={};
 	$scope.ctx = ctx;
 	$scope.isCollapsed = true;
+	$scope.showResultTag = false;
 	tagService.getTags().success(function(data){
 		if(data.status){
 			$scope.tags = data.tags;
@@ -18,10 +19,15 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService){
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).success(function(data){
 			console.log(data);
-			if(data.status){
+			if(data.status==1){
 				$scope.isCollapsed = true;
-			}else{
-				$scope.result = data;
+			}else if(data.status==2){
+				$scope.createResult = data.msg;
+				$scope.existTag = data.tag;
+				$scope.showResultTag = true;
+			}
+			else{
+				$scope.createResult = data.msg;
 			}
 		})
 	};
