@@ -1,5 +1,15 @@
 <div class="row" ng-controller="TagController">
-	<div class="col-md-9">热门标签</div>
+	<div class="col-md-9">
+	<div class="row">
+		<span class="pagetitle">热门标签</span>
+		<hr>
+	</div>
+	<div class="row">
+		<span class="label label-info mylabel" ng-repeat="tag in tags">{{tag.name}}</span>
+	</div>
+	
+
+	</div>
 	<div class="col-md-3">
 		<span class="pagetitle">我的标签</span>
 		<button type="button" class="btn btn-default pull-right" ng-click="isCollapsed = !isCollapsed">新增</button>

@@ -1,9 +1,15 @@
 var tagUrl = "/tag";
-MusicTag.controller('TagController',function($scope,$http,$window){
+MusicTag.controller('TagController',function($scope,$http,$window,tagService){
 	$scope.result={};
 	$scope.formData={};
 	$scope.ctx = ctx;
 	$scope.isCollapsed = true;
+	tagService.getTags().success(function(data){
+		if(data.status){
+			$scope.tags = data.tags;
+		}
+		
+	})
 	$scope.processForm = function(){
 		$http({
 			method:'POST',

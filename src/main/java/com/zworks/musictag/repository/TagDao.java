@@ -1,5 +1,6 @@
 package com.zworks.musictag.repository;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.zworks.musictag.entity.Tag;
@@ -12,6 +13,6 @@ import com.zworks.musictag.entity.Tag;
  * @Description: TODO
  *
  **/
-public interface TagDao extends PagingAndSortingRepository<Tag, Long> {
+public interface TagDao extends PagingAndSortingRepository<Tag, Long>, JpaSpecificationExecutor<Tag>  {
 
 }

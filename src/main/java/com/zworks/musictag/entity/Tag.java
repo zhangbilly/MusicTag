@@ -24,6 +24,10 @@ public class Tag extends IdEntity {
 	private String name;
 	private String createTime;
 	private User creator;
+	
+	public static final String NAME = "name";
+	public static final String CREATETIME = "createTime";
+	public static final String CREATOR = "creator";
 
 	@NotBlank
 	public String getName() {
