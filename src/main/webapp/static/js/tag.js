@@ -1,5 +1,6 @@
 var tagUrl = "/tag";
-MusicTag.controller('TagController',function($scope,$http,$window,tagService){
+var tagDetailUrl = "/tagdetail"
+MusicTag.controller('TagController',function($scope,$http,$window,tagService,$state){
 	$scope.result={};
 	$scope.formData={};
 	$scope.ctx = ctx;
@@ -24,7 +25,7 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService){
 			}else if(data.status==2){
 				$scope.createResult = data.msg;
 				$scope.existTag = data.tag;
-				$scope.showResultTag = true;
+				$state.go("tag.tagdetail")
 			}
 			else{
 				$scope.createResult = data.msg;

@@ -1,0 +1,34 @@
+<div class="row">
+	<span class="pagetitle">标签</span>
+	<hr>
+</div>
+<div class="row">
+	<span class="label label-info mylabel">{{existTag.name}}</span>
+	创建人：{{existTag.creator.userName}}
+	<hr>
+</div>
+<div class="row">
+	<div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>歌曲</th>
+					<th>时长</th>
+					<th>歌手</th>
+					<th>专辑</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="song in songs">
+					<td ng-bind="$index+1"></td>
+					<td>{{song.songName}}</td>
+					<td>{{song.singer}}</td>
+					<td>{{song.duration}}</td>
+					<td>{{song.album}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

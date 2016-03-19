@@ -1,0 +1,26 @@
+<div class="row" ng-controller="TagController">
+	<div class="col-md-9" ui-view>
+	</div>
+	<div class="col-md-3">
+		<span class="pagetitle">我的标签</span>
+		<button type="button" class="btn btn-default pull-right" ng-click="isCollapsed = !isCollapsed">新增</button>
+		<div>
+
+			<hr>
+			<div uib-collapse="isCollapsed">
+				<div class="well well-lg">
+					<form ng-submit="processForm()" novalidate>
+						<div class="form-group">
+							<label class="sr-only" for="tagName">Tag Name</label>
+							<input type="text" class="form-control" id="tagName" name="tagName" ng-model="formData.tagName" placeholder="请输入标签名"></div>
+						<div class="form-group">
+							<span id="helpBlock" class="help-block">{{createResult}}</span>
+							<button type="submit" class="btn btn-default">确认</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div></div>
+	</div>
+</div>
