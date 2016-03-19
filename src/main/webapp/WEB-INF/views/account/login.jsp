@@ -51,10 +51,17 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
+						<div class="col-md-offset-2 col-md-5">
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" id="rememberMe" name="rememberMe" ng-model="formData.rememberme">记住我</label>
+							</div>
+						</div>
+												<div class="col-md-5">
+							<div class="checkbox">
+								<label>
+									<a href="{{ctx}}/register">立即注册</a>
+									</label>
 							</div>
 						</div>
 					</div>
