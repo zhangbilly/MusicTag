@@ -4,25 +4,36 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="singer")
-public class Singer extends IdEntity{
-	private String name;
+@Table(name = "singer")
+public class Singer extends IdEntity {
+	private String singerName;
 	private String alias;
 	private String birthday;
 	private int sex;
 	private String pkCountry;
 	private String detail;
-	
-	public Singer(){
-		
+
+	public static final String SINGERNAME = "singerName";
+	public static final String ALIAS = "alias";
+	public static final String BIRTHDAY = "birthday";
+	public static final String SEX = "sex";
+	public static final String PKCOUNTRY = "pkCountry";
+	public static final String DETAIL = "detail";
+
+	public Singer() {
+
 	}
 
-	public String getName() {
-		return name;
+	public Singer(long id) {
+		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getSingerName() {
+		return singerName;
+	}
+
+	public void setSingerName(String singerName) {
+		this.singerName = singerName;
 	}
 
 	public String getAlias() {

@@ -17,40 +17,46 @@ import org.hibernate.validator.constraints.NotBlank;
  *
  */
 @Entity
-@Table(name="song")
-public class Song extends IdEntity{
+@Table(name = "song")
+public class Song extends IdEntity {
 	private String songName;
 	private Singer singer;
 	private Album album;
 	private String duration;
+
 	@NotBlank
 	public String getSongName() {
 		return songName;
 	}
+
 	public void setSongName(String songName) {
 		this.songName = songName;
 	}
-	@NotBlank
+
 	@OneToOne
-	@JoinColumn(name="pk_singer")
+	@JoinColumn(name = "singer_id")
 	public Singer getSinger() {
 		return singer;
 	}
+
 	public void setSinger(Singer singer) {
 		this.singer = singer;
 	}
-	@NotBlank
+
 	@OneToOne
-	@JoinColumn(name="pk_album")
+	@JoinColumn(name = "album_id")
 	public Album getAlbum() {
 		return album;
 	}
+
 	public void setAlbum(Album album) {
 		this.album = album;
 	}
+
 	public String getDuration() {
 		return duration;
 	}
+
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}

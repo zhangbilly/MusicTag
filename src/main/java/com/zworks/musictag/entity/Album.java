@@ -6,15 +6,19 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="album")
-public class Album extends IdEntity{
+@Table(name = "album")
+public class Album extends IdEntity {
 	private String albumName;
 	private Singer singer;
 	private String releaseTime;
 	private String description;
-	
-	public Album(){
-		
+
+	public Album() {
+
+	}
+
+	public Album(long id) {
+		this.id = id;
 	}
 
 	public String getAlbumName() {
@@ -24,8 +28,9 @@ public class Album extends IdEntity{
 	public void setAlbumName(String albumName) {
 		this.albumName = albumName;
 	}
+
 	@OneToOne
-	@JoinColumn(name="pk_singer")
+	@JoinColumn(name = "pk_singer")
 	public Singer getSinger() {
 		return singer;
 	}
