@@ -24,6 +24,11 @@ public class Song extends IdEntity {
 	private Album album;
 	private String duration;
 
+	public static final String SONGNAME = "songName";
+	public static final String SINGER = "singer";
+	public static final String ALBUM = "album";
+	public static final String DURATION = "duration";
+
 	@NotBlank
 	public String getSongName() {
 		return songName;
