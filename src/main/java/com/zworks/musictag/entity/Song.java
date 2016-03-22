@@ -5,10 +5,13 @@ package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @Description:
@@ -38,8 +41,9 @@ public class Song extends IdEntity {
 		this.songName = songName;
 	}
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "singer_id")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	public Singer getSinger() {
 		return singer;
 	}
@@ -48,8 +52,9 @@ public class Song extends IdEntity {
 		this.singer = singer;
 	}
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "album_id")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	public Album getAlbum() {
 		return album;
 	}

@@ -59,4 +59,9 @@ public class MusicTagService {
 		Specification<MusicTag> spec = DynamicSpecifications.bySearchFilter(filters.values(), MusicTag.class);
 		return spec;
 	}
+
+	public void save(MusicTag musicTag) {
+		musicTagDao.save(musicTag);
+
+	}
 }

@@ -111,6 +111,7 @@
 	<script src="${ctx}/static/angular-ui/ui-bootstrap-1.2.4.min.js"></script>
 	<script src="${ctx}/static/js/services.js"></script>
 	<script src="${ctx}/static/js/router.js"></script>
+	<script src="${ctx}/static/js/filter.js"></script>
 	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
 	<!-- 各个子页面的js-->
 	<script src="${ctx}/static/js/tag.js"></script>

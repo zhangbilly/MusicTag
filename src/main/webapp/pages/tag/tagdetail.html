@@ -7,11 +7,23 @@
 	<button class="btn btn-default pull-right" ng-click="showAddSong = !showAddSong">添加音乐</button>
 	<hr></div>
 <div class="row" uib-collapse="showAddSong">
-	<form class="form-inline well well-lg">
+	<form class="form-inline well well-lg" ng-submit="processSearchForm()">
 		<div class="form-group">
 			<label for="songName">歌曲名</label>
-			<input type="search" class="form-control" id="songName" placeholder="请输入歌曲名">
-		</div>
+			<input type="search" class="form-control" id="songName" name ="songName" ng-model="searchData.song.songName" placeholder="请输入歌曲名">
+			</div>
+		<ul>
+			<!-- Render a li element for every entry in the items array. Notice
+				 the custom search filter "searchFor". It takes the value of the
+				 searchString model as an argument.
+			 -->
+			<li ng-repeat="i in items | searchSong:songName">
+				<a href="{{i.url}}">
+					<img ng-src="{{i.image}}" />
+				</a>
+				<p>{{i.title}}</p>
+			</li>
+		</ul>
 		<button type="submit" class="btn btn-default">确认</button>
 	</form>
 </div>

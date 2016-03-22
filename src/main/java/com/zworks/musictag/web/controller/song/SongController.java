@@ -49,7 +49,7 @@ public class SongController {
 	}
 
 	@RequestMapping(value = "songlistbytag", method = RequestMethod.GET)
-	public @ResponseBody JsonResponse getSongList(@RequestParam(value = "pn", defaultValue = "1") int pageNumber,
+	public @ResponseBody JsonResponse getSongListByTag(@RequestParam(value = "pn", defaultValue = "1") int pageNumber,
 			@RequestParam(value = "ps", defaultValue = "20") int pageSize,
 			@RequestParam(value = "sortType", defaultValue = "auto") String sortType, Model model,
 			HttpServletRequest request) {
@@ -60,6 +60,22 @@ public class SongController {
 			searchParams.put(Operator.EQ + "_" + "song.id", tagId);
 		}
 		Page<MusicTag> songList = musicTagService.getSongsByTag(searchParams, pageNumber, pageSize, sortType);
+		json.successWithData("songs", songList);
+		return json;
+	}
+
+	@RequestMapping(value = "songlist", method = RequestMethod.GET)
+	public @ResponseBody JsonResponse getSongListBuyName(@RequestParam(value = "pn", defaultValue = "1") int pageNumber,
+			@RequestParam(value = "ps", defaultValue = "20") int pageSize,
+			@RequestParam(value = "sortType", defaultValue = "auto") String sortType, Model model,
+			HttpServletRequest request) {
+		JsonResponse json = new JsonResponse();
+		Map<String, Object> searchParams = new HashMap<String, Object>();
+		String songName = request.getParameter(Song.SONGNAME);
+		if (StringUtils.isNotBlank(songName)) {
+			searchParams.put(Operator.EQ + "_" + Song.SONGNAME, songName);
+		}
+		Page<Song> songList = songService.getSongs(searchParams, pageNumber, pageSize, sortType);
 		json.successWithData("songs", songList);
 		return json;
 	}

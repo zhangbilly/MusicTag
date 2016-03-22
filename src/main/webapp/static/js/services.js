@@ -1,7 +1,8 @@
 var MusicTag = angular.module("MusicTag",['ui.router','ui.bootstrap']);
 var getTagsUrl = "/tag/tags";
-var getSongs = "/song/songs";
+var getSongByTagURL = "/songlistbytag";
 var getSingerUrl = "/singer/singers";
+var getSongs = "/songlist";
 MusicTag.service('encryptService', function(){
 	this.encrypt = function(string){
 		var shaObj = new jsSHA("SHA-1", "TEXT");
@@ -22,19 +23,20 @@ MusicTag.service('tagService', ['$http', function($http){
 }]);
 MusicTag.service('songService', ['$http', function($http){
 	this.getSongByTag = function(tagId){
-		var data = {tag.id:tagId}
+		var data = {tagid:tagId};
 		return $http({
 			method:'GET',
-			url:ctx+getSongs,
+			url:ctx+getSongByTagURL,
 			params:data,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
 	};
 	this.getSongByName = function(songName){
+		var data = {songName:songName};
 		return $http({
 			method:'GET',
 			url:ctx+getSongs,
-			data:$.param(songName),
+			params:data,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		})
 	}
