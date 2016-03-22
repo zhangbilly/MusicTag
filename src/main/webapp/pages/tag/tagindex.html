@@ -3,5 +3,5 @@
 	<hr>
 </div>
 <div class="row">
-	<span class="label label-info mylabel" ng-repeat="tag in tags">{{tag.name}}</span>
+	<span class="label label-info mylabel" ng-repeat="tag in tags" ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span>
 </div>

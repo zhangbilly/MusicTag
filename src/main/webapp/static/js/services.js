@@ -21,11 +21,12 @@ MusicTag.service('tagService', ['$http', function($http){
 	}
 }]);
 MusicTag.service('songService', ['$http', function($http){
-	this.getSongByTag = function(){
+	this.getSongByTag = function(tagId){
+		var data = {tag.id:tagId}
 		return $http({
 			method:'GET',
 			url:ctx+getSongs,
-			//data:$.param($scope.data),
+			params:data,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
 	};

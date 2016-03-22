@@ -26,7 +26,7 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 				$scope.isCollapsed = true;
 			}else if(data.status==2){
 				$scope.createResult = data.msg;
-				$scope.existTag = data.tag;
+				$scope.ctag = data.tag;
 				$state.go("tag.tagdetail");
 				songService.getSongByTag().success(function(data){
 					if(data.status){
@@ -39,4 +39,15 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 			}
 		})
 	};
+	$scope.showDetail = function(tag){
+		$scope.ctag = tag;
+		console.log($scope.ctag);
+		$state.go("tag.tagdetail");
+		$scope.songs=songService.getSongByTag().success(function(data){
+					if(data.status){
+						$scope.songs = data.songs;
+						console.log($scope.songs);
+					}
+	}
+	)};
 });

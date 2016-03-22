@@ -10,9 +10,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
@@ -27,7 +25,8 @@ public class Tag extends IdEntity {
 	private String name;
 	private String createTime;
 	private User creator;
-	
+
+	public static final String TAGID = "tagId";
 	public static final String NAME = "name";
 	public static final String CREATETIME = "createTime";
 	public static final String CREATOR = "creator";
@@ -52,7 +51,7 @@ public class Tag extends IdEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "creator")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class,property = "@id")  
+	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	public User getCreator() {
 		return creator;
 	}
