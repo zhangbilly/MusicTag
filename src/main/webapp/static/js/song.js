@@ -17,6 +17,7 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 			console.log(data);
 			if(data.status==1){
 				$scope.isCollapsed = true;
+				$scope.formData={};
 			}else if(data.status==2){
 				$scope.createResult = data.msg;
 				$scope.existTag = data.tag;
@@ -38,7 +39,12 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
             $scope.timeout = $timeout(function() {
                 singerService.getSingerByName(newVal).success(function(data){
                 	if(data.status){
-                		$scope.items = data.songs;
+                		if(data.singers.length>0){
+                			$scope.items = data.songs;
+                		}else{
+                			//$scope.showSingerForm = true;
+                		}
+                		
                 	}else{
                 		//$scope.showSingerForm = true;
                 	}

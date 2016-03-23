@@ -53,4 +53,8 @@ public class SingerService {
 		Specification<Singer> spec = DynamicSpecifications.bySearchFilter(filters.values(), Singer.class);
 		return spec;
 	}
+
+	public Singer save(Singer singer) {
+		return singerDao.save(singer);
+	}
 }

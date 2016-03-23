@@ -21,7 +21,9 @@ import org.springside.modules.persistence.SearchFilter.Operator;
 import com.zworks.musictag.entity.MusicTag;
 import com.zworks.musictag.entity.Song;
 import com.zworks.musictag.entity.Tag;
+import com.zworks.musictag.service.AlbumService;
 import com.zworks.musictag.service.MusicTagService;
+import com.zworks.musictag.service.SingerService;
 import com.zworks.musictag.service.SongService;
 import com.zworks.musictag.utils.JsonResponse;
 
@@ -38,11 +40,22 @@ public class SongController {
 	@Autowired
 	private SongService songService;
 	@Autowired
+	private SingerService singerService;
+	@Autowired
+	private AlbumService albumService;
+	@Autowired
 	private MusicTagService musicTagService;
 
 	@RequestMapping(value = "song", method = RequestMethod.POST)
 	public @ResponseBody JsonResponse createSong(@RequestBody Song song, BindingResult result) {
 		JsonResponse json = new JsonResponse();
+		if (song.getSinger().getId() == null) {
+			singerService.save(song.getSinger());
+		}
+		if (song.getAlbum().getId() == null) {
+			song.getAlbum().setSinger(song.getSinger());
+			albumService.save(song.getAlbum());
+		}
 		songService.save(song);
 		json.successWithData("song", song);
 		return json;

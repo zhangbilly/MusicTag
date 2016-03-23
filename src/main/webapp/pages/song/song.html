@@ -13,7 +13,7 @@
 							<input type="text" class="form-control" id="songName" name="songName" ng-model="formData.songName" placeholder="请输入歌曲名"></div>
 						<div class="form-group" ng-if="!showSingerForm">
 							<label class="sr-only" for="singer">歌手</label>
-							<input type="text" class="form-control" id="singer.id" name="singer.id" ng-model="formData.singer.id" placeholder="请输入歌手">
+							<input type="text" class="form-control" id="singer.singerName" name="singer.singerName" ng-model="formData.singer.singerName" placeholder="请输入歌手">
 							<ul>
 								<!-- Render a li element for every entry in the items array. Notice
 				 the custom search filter "searchFor". It takes the value of the
@@ -29,7 +29,7 @@
 						</div>
 						<div class="form-group">
 							<label class="sr-only" for="album">专辑</label>
-							<input type="text" class="form-control" id="album.id" name="album.id" ng-model="formData.album.id" placeholder="请输入专辑"></div>
+							<input type="text" class="form-control" id="album.albumName" name="album.albumName" ng-model="formData.album.albumName" placeholder="请输入专辑"></div>
 						<div class="form-group">
 							<label class="sr-only" for="duration">时长</label>
 							<input type="text" class="form-control" id="duration" name="duration" ng-model="formData.duration" placeholder="请输入歌曲时长"></div>
