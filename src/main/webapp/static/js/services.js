@@ -43,11 +43,11 @@ MusicTag.service('songService', ['$http', function($http){
 }]);
 MusicTag.service('singerService', ['$http', function($http){
 		this.getSingerByName = function(singerName){
-		var data = {singerName:singerName};
+		//var data = {singerName:singerName};
 		return $http({
 			method:'GET',
 			url:ctx+getSingerUrl,
-			params:data,
+			params:singerName,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
 	};

@@ -1,5 +1,6 @@
 <div class="row" ng-controller="SongController">
-	<div class="col-md-9" ui-view></div>
+	<div class="col-md-9" ui-view>
+	</div>
 	<div class="col-md-3">
 		<span class="pagetitle">我的音乐</span>
 		<button type="button" class="btn btn-default pull-right" ng-click="isCollapsed = !isCollapsed">新增</button>
@@ -15,15 +16,8 @@
 							<label class="sr-only" for="singer">歌手</label>
 							<input type="text" class="form-control" id="singer.singerName" name="singer.singerName" ng-model="formData.singer.singerName" placeholder="请输入歌手">
 							<ul>
-								<!-- Render a li element for every entry in the items array. Notice
-				 the custom search filter "searchFor". It takes the value of the
-				 searchString model as an argument.
-			 -->
-								<li ng-repeat="i in items | searchSong:searchString">
-									<a href="{{i.url}}">
-										<img ng-src="{{i.image}}" />
-									</a>
-									<p>{{i.title}}</p>
+								<li ng-repeat="singer in singers">
+									<p>{{singer.singerName}}</p>
 								</li>
 							</ul>
 						</div>

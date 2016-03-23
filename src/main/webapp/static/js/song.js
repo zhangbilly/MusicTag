@@ -3,6 +3,7 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 	$scope.isCollapsed = true;
 	$scope.formData = {};
 	$scope.showSingerForm = false;
+	$scope.singers = {};
 	$scope.processForm = function(){
 		//$scope.formData.singerid=1;
 		//$scope.formData.albumid=1
@@ -40,7 +41,7 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
                 singerService.getSingerByName(newVal).success(function(data){
                 	if(data.status){
                 		if(data.singers.length>0){
-                			$scope.items = data.songs;
+                			$scope.singers = data.singers;
                 		}else{
                 			//$scope.showSingerForm = true;
                 		}
