@@ -34,6 +34,11 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 			}
 		})
 	};
+	//模糊匹配时选择歌手
+	$scope.chooseSinger = function(singer){
+		$scope.formData.singer.singerName = singer.singerName;
+		$scope.formData.singer.id = singer.id;
+	}
 	$scope.$watch('formData.singer', function (newVal, oldVal) {
         if (newVal !== oldVal) {
             if ($scope.timeout) $timeout.cancel($scope.timeout);

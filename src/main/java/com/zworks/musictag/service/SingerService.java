@@ -49,7 +49,7 @@ public class SingerService {
 	private Specification<Singer> buildSpecification(String singerName, Map<String, Object> searchParams) {
 		Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
 		if (StringUtils.isNotBlank(singerName))
-			filters.put(Singer.SINGERNAME, new SearchFilter(Singer.SINGERNAME, Operator.EQ, singerName));
+			filters.put(Singer.SINGERNAME, new SearchFilter(Singer.SINGERNAME, Operator.LIKE, singerName));
 		Specification<Singer> spec = DynamicSpecifications.bySearchFilter(filters.values(), Singer.class);
 		return spec;
 	}

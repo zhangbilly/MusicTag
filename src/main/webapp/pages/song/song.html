@@ -16,7 +16,7 @@
 							<label class="sr-only" for="singer">歌手</label>
 							<input type="text" class="form-control" id="singer.singerName" name="singer.singerName" ng-model="formData.singer.singerName" placeholder="请输入歌手">
 							<ul>
-								<li ng-repeat="singer in singers">
+								<li ng-repeat="singer in singers" ng-click="chooseSinger(singer)">
 									<p>{{singer.singerName}}</p>
 								</li>
 							</ul>
