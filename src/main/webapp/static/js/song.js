@@ -16,6 +16,7 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 			data:$scope.formData
 		}).success(function(data){
 			console.log(data);
+			$scope.isChoosed = false;
 			if(data.status==1){
 				$scope.isCollapsed = true;
 				$scope.formData={};
@@ -38,17 +39,20 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 	$scope.chooseSinger = function(singer){
 		$scope.formData.singer.singerName = singer.singerName;
 		$scope.formData.singer.id = singer.id;
+		$scope.isChoosed = true;
+		$scope.singers = {};
 	}
 	$scope.$watch('formData.singer', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
+        if (newVal !== oldVal&&newVal!=undefined&&newVal.singerName!==undefined&&newVal.singerName!==""&&!$scope.isChoosed) {
             if ($scope.timeout) $timeout.cancel($scope.timeout);
             $scope.timeout = $timeout(function() {
                 singerService.getSingerByName(newVal).success(function(data){
                 	if(data.status){
                 		if(data.singers.length>0){
                 			$scope.singers = data.singers;
+                			$scope.isChoosed = false;
                 		}else{
-                			//$scope.showSingerForm = true;
+                			$scope.singers = {};
                 		}
                 		
                 	}else{
