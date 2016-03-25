@@ -13,6 +13,11 @@ public class Album extends IdEntity {
 	private String releaseTime;
 	private String description;
 
+	public static final String ALBUMNAME = "albumName";
+	public static final String SINGER = "singer";
+	public static final String RELEASETIME = "releaseTime";
+	public static final String DESCRIPTION = "description";
+
 	public Album() {
 
 	}

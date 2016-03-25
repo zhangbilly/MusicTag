@@ -1,5 +1,5 @@
 var createSongUrl = "/song"
-MusicTag.controller('SongController',function($scope,singerService,$timeout,$http){
+MusicTag.controller('SongController',function($scope,singerService,$timeout,$http,albumService){
 	$scope.isCollapsed = true;
 	$scope.formData = {};
 	$scope.showSingerForm = false;
@@ -53,6 +53,33 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
                 			$scope.isChoosed = false;
                 		}else{
                 			$scope.singers = {};
+                		}
+                		
+                	}else{
+                		//$scope.showSingerForm = true;
+                	}
+                })
+            }, 800);
+        }
+    }, true);
+    //模糊匹配时选择专辑
+	$scope.chooseAlbum = function(album){
+		$scope.formData.album.albumName = album.albumName;
+		$scope.formData.album.id = album.id;
+		$scope.isAlbumChoosed = true;
+		$scope.albums = {};
+	}
+	$scope.$watch('formData.album', function (newVal, oldVal) {
+        if (newVal !== oldVal&&newVal!=undefined&&newVal.albumName!==undefined&&newVal.albumName!==""&&!$scope.isAlbumChoosed) {
+            if ($scope.timeout) $timeout.cancel($scope.timeout);
+            $scope.timeout = $timeout(function() {
+                albumService.getAlbumByName(newVal).success(function(data){
+                	if(data.status){
+                		if(data.albums.length>0){
+                			$scope.albums = data.albums;
+                			$scope.isAlbumChoosed = false;
+                		}else{
+                			$scope.albums = {};
                 		}
                 		
                 	}else{
