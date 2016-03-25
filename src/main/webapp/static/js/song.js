@@ -16,7 +16,6 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 			data:$scope.formData
 		}).success(function(data){
 			console.log(data);
-			$scope.isChoosed = false;
 			if(data.status==1){
 				$scope.isCollapsed = true;
 				$scope.formData={};
@@ -39,18 +38,17 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 	$scope.chooseSinger = function(singer){
 		$scope.formData.singer.singerName = singer.singerName;
 		$scope.formData.singer.id = singer.id;
-		$scope.isChoosed = true;
+		$scope.choosedSingerName = singer.singerName;
 		$scope.singers = {};
 	}
 	$scope.$watch('formData.singer', function (newVal, oldVal) {
-        if (newVal !== oldVal&&newVal!=undefined&&newVal.singerName!==undefined&&newVal.singerName!==""&&!$scope.isChoosed) {
+        if (newVal !== oldVal&&newVal!=undefined&&newVal.singerName!==undefined&&newVal.singerName!==""&&newVal.singerName!==$scope.choosedSingerName) {
             if ($scope.timeout) $timeout.cancel($scope.timeout);
             $scope.timeout = $timeout(function() {
                 singerService.getSingerByName(newVal).success(function(data){
                 	if(data.status){
                 		if(data.singers.length>0){
                 			$scope.singers = data.singers;
-                			$scope.isChoosed = false;
                 		}else{
                 			$scope.singers = {};
                 		}
@@ -66,18 +64,17 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 	$scope.chooseAlbum = function(album){
 		$scope.formData.album.albumName = album.albumName;
 		$scope.formData.album.id = album.id;
-		$scope.isAlbumChoosed = true;
+		$scope.choosedAlbumName = album.albumName;
 		$scope.albums = {};
 	}
 	$scope.$watch('formData.album', function (newVal, oldVal) {
-        if (newVal !== oldVal&&newVal!=undefined&&newVal.albumName!==undefined&&newVal.albumName!==""&&!$scope.isAlbumChoosed) {
+        if (newVal !== oldVal&&newVal!=undefined&&newVal.albumName!==undefined&&newVal.albumName!==""&&newVal.albumName!==$scope.choosedAlbumName) {
             if ($scope.timeout) $timeout.cancel($scope.timeout);
             $scope.timeout = $timeout(function() {
                 albumService.getAlbumByName(newVal).success(function(data){
                 	if(data.status){
                 		if(data.albums.length>0){
-                			$scope.albums = data.albums;
-                			$scope.isAlbumChoosed = false;
+                			$scope.albums = data.albums;                			
                 		}else{
                 			$scope.albums = {};
                 		}
