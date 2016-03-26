@@ -18,6 +18,10 @@ MusicTag.config(function ($stateProvider, $urlRouterProvider) {
             url:"/song",
             templateUrl: "/"+projectName+"/pages/song/song.html"
         })
+        .state("song.songpage", {
+            url:"/songpage",
+            templateUrl: "/"+projectName+"/pages/song/songlist.html"
+        })
         .state("songlist", {
             url:"/songlist",
             templateUrl: "/"+projectName+"/pages/songlist.html"

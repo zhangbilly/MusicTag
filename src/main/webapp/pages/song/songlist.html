@@ -1,0 +1,32 @@
+<div>
+	<div class="row">
+		<span class="pagetitle">热门歌曲</span>
+		<hr></div>
+	<div class="row">
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>歌曲</th>
+						<th>歌手</th>
+						<th>时长</th>
+						<th>专辑</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="song in songs">
+						<td ng-bind="$index+1"></td>
+						<td>{{song.songName}}</td>
+						<td>{{song.singer.singerName}}</td>
+						<td>{{song.duration}}</td>
+						<td>{{song.album.albumName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<uib-pagination total-items="pagination.totalItems" ng-model="pagination.pn" class="pagination" boundary-link-numbers="true" rotate="false" items-per-page="pagination.ps" ng-change="pageChange()"></uib-pagination>
+
+</div>

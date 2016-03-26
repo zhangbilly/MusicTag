@@ -55,7 +55,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#" ui-sref="song">音乐</a>
+								<a href="#" ui-sref="song.songpage">音乐</a>
 							</li>
 							<li>
 								<a href="#" ui-sref="songlist">歌单</a>
@@ -108,7 +108,7 @@
 	<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 	<script src="${ctx}/static/angular-1.4.8/angular.min.js"></script>
 	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
-	<script src="${ctx}/static/angular-ui/ui-bootstrap-1.2.4.min.js"></script>
+	<script src="${ctx}/static/angular-ui/ui-bootstrap-tpls-1.2.5.js"></script>
 	<script src="${ctx}/static/js/services.js"></script>
 	<script src="${ctx}/static/js/router.js"></script>
 	<script src="${ctx}/static/js/filter.js"></script>

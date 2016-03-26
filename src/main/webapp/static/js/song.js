@@ -1,9 +1,18 @@
 var createSongUrl = "/song"
-MusicTag.controller('SongController',function($scope,singerService,$timeout,$http,albumService){
+MusicTag.controller('SongController',function($scope,singerService,$timeout,$http,albumService,songService){
 	$scope.isCollapsed = true;
 	$scope.formData = {};
 	$scope.showSingerForm = false;
 	$scope.singers = {};
+	$scope.pagination = {};
+	$scope.pagination.pn = 1;
+	$scope.pagination.ps = 10;
+	songService.getSongs($scope.pagination.pn,$scope.pagination.ps).success(function(data){
+		if(data.status==1){
+			$scope.songs = data.songs.content;
+			$scope.pagination.totalItems = data.songs.totalElements;
+		}
+	});
 	$scope.processForm = function(){
 		//$scope.formData.singerid=1;
 		//$scope.formData.albumid=1
@@ -86,4 +95,12 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
             }, 800);
         }
     }, true);
+    $scope.pageChange = function(){
+    	songService.getSongs($scope.pagination.pn,$scope.pagination.ps).success(function(data){
+		if(data.status==1){
+			$scope.songs = data.songs.content;
+			$scope.totalItems = data.songs.totalElements;
+		}
+	});
+    }
 });

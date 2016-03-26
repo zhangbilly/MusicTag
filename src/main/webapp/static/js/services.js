@@ -40,7 +40,25 @@ MusicTag.service('songService', ['$http', function($http){
 			params:data,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		})
-	}
+	};
+	this.getSongs = function(){
+		var data = {songName:songName};
+		return $http({
+			method:'GET',
+			url:ctx+getSongs,
+			params:data,
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		})
+	};
+	this.getSongs = function(pn,ps){
+		var data = {pn:pn,ps:ps};
+		return $http({
+			method:'GET',
+			url:ctx+getSongs,
+			params:data,
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		})
+	};
 }]);
 MusicTag.service('albumService', ['$http', function($http){
 	this.getAlbumByName = function(albumName){
@@ -63,4 +81,4 @@ MusicTag.service('singerService', ['$http', function($http){
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
 	};
-}])
+}]);
