@@ -45,11 +45,13 @@ public class TagService {
 		tag.setCreateTime(DataUtils.getCurrectTime());
 		return tag;
 	}
-	public List<Tag> getTags(int pageNumber, int pageSize, String sortType){
+
+	public List<Tag> getTags(int pageNumber, int pageSize, String sortType) {
 		PageRequest pageRequest = buildPageRequest(pageNumber, pageSize, sortType);
 		Specification<Tag> spec = buildSpecification();
 		return tagDao.findAll(spec, pageRequest).getContent();
 	}
+
 	/**
 	 * 创建分页请求.
 	 */
@@ -63,21 +65,27 @@ public class TagService {
 
 		return new PageRequest(pageNumber - 1, pagzSize, sort);
 	}
+
 	/**
 	 * 创建动态查询条件组合.
 	 */
 	private Specification<Tag> buildSpecification() {
-		Map<String, SearchFilter> filters =  Maps.newHashMap();
+		Map<String, SearchFilter> filters = Maps.newHashMap();
 		Specification<Tag> spec = DynamicSpecifications.bySearchFilter(filters.values(), Tag.class);
 		return spec;
 	}
 
 	/**
 	 * 根据标签名获取标签
+	 * 
 	 * @param tagName
 	 * @return
 	 */
 	public Tag getTagByName(String tagName) throws NonUniqueResultException {
 		return tagDao.findByName(tagName);
+	}
+
+	public Tag getTagById(Long tagId) {
+		return tagDao.findOne(tagId);
 	}
 }

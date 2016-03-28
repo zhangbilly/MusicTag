@@ -4,6 +4,7 @@ var getSongByTagURL = "/songlistbytag";
 var getSingerUrl = "/singer/singers";
 var getSongs = "/songlist";
 var getAlbumsUrl = "/albums";
+var getTagByIdUrl = "/tag/tag/";
 MusicTag.service('encryptService', function(){
 	this.encrypt = function(string){
 		var shaObj = new jsSHA("SHA-1", "TEXT");
@@ -28,11 +29,18 @@ MusicTag.service('tagService', ['$http', function($http){
 			params:songId,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
+	};
+	this.getTagById = function(tagId){
+		return $http({
+			method:'GET',
+			url:ctx+getTagByIdUrl+tagId,
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		})
 	}
 }]);
 MusicTag.service('songService', ['$http', function($http){
 	this.getSongByTag = function(tagId){
-		var data = {tagid:tagId};
+		var data = {tagId:tagId};
 		return $http({
 			method:'GET',
 			url:ctx+getSongByTagURL,

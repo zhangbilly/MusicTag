@@ -70,7 +70,7 @@ public class SongController {
 		Map<String, Object> searchParams = new HashMap<String, Object>();
 		String tagId = request.getParameter(Tag.TAGID);
 		if (StringUtils.isNotBlank(tagId)) {
-			searchParams.put(Operator.EQ + "_" + "song.id", tagId);
+			searchParams.put(Operator.EQ + "_" + "tag.id", tagId);
 		}
 		Page<MusicTag> songList = musicTagService.getSongsByTag(searchParams, pageNumber, pageSize, sortType);
 		json.successWithData("songs", songList);

@@ -15,7 +15,7 @@ import com.zworks.musictag.entity.Tag;
  * @Description: TODO
  *
  **/
-public interface TagDao extends PagingAndSortingRepository<Tag, Long>, JpaSpecificationExecutor<Tag>  {
+public interface TagDao extends PagingAndSortingRepository<Tag, Long>, JpaSpecificationExecutor<Tag> {
 
 	/**
 	 * @param tagName

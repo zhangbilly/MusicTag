@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -81,6 +82,14 @@ public class TagController {
 		JsonResponse json = new JsonResponse();
 		List<Tag> tagList = tagService.getTags(pageNumber, pageSize, sortType);
 		json.successWithData("tags", tagList);
+		return json;
+	}
+
+	@RequestMapping(value = "tag/{tagId}", method = RequestMethod.GET)
+	public @ResponseBody JsonResponse getTagById(@PathVariable("tagId") Long tagId, HttpServletRequest request) {
+		JsonResponse json = new JsonResponse();
+		Tag tag = tagService.getTagById(tagId);
+		json.successWithData("tag", tag);
 		return json;
 	}
 

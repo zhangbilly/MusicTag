@@ -115,6 +115,8 @@
 	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
 	<!-- 各个子页面的js-->
 	<script src="${ctx}/static/js/tag.js"></script>
+	<script src="${ctx}/static/js/tagdetail.js"></script>
+	<script src="${ctx}/static/js/tagindex.js"></script>
 	<script src="${ctx}/static/js/song.js"></script>
 </body>
 </html>
