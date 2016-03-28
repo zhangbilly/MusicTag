@@ -53,8 +53,8 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 					}
 	}
 	)};
-	$scope.$watch('searchData.songName', function (newVal, oldVal) {
-        if (newVal !== oldVal) {
+	$scope.$watch('searchData.song.songName', function (newVal, oldVal) {
+        if (newVal !== oldVal&&newVal!=undefined&&newVal!==""&&newVal!==$scope.choosedSongName) {
             if ($scope.timeout) $timeout.cancel($scope.timeout);
             $scope.timeout = $timeout(function() {
                 songService.getSongByName(newVal).success(function(data){
@@ -71,7 +71,8 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
     $scope.processSearchForm = function(){
     	var data = {
     		song:{
-    			songName:$scope.searchData.song.songName
+    			songName:$scope.searchData.song.songName,
+    			id:$scope.searchData.song.id
     		},
     		tag:{
     			id:$scope.ctag.id
@@ -88,4 +89,11 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 			}
 		})
     }
+    //模糊匹配歌曲时选择歌曲
+	$scope.chooseSong = function(song){
+		$scope.searchData.song.songName = song.songName;
+		$scope.searchData.song.id = song.id;
+		$scope.choosedSongName = song.songName;
+		$scope.items = {};
+	}
 });

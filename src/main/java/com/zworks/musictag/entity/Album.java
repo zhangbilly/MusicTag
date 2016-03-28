@@ -5,6 +5,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "album")
 public class Album extends IdEntity {
@@ -36,6 +39,7 @@ public class Album extends IdEntity {
 
 	@OneToOne
 	@JoinColumn(name = "pk_singer")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	public Singer getSinger() {
 		return singer;
 	}

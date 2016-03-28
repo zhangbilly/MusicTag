@@ -2,6 +2,7 @@ package com.zworks.musictag.service;
 
 import java.util.Map;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,7 +14,10 @@ import org.springside.modules.persistence.DynamicSpecifications;
 import org.springside.modules.persistence.SearchFilter;
 
 import com.zworks.musictag.entity.MusicTag;
+import com.zworks.musictag.entity.User;
 import com.zworks.musictag.repository.MusicTagDao;
+import com.zworks.musictag.service.ShiroDbRealm.ShiroUser;
+import com.zworks.musictag.utils.DataUtils;
 
 /**
  * @date 2016年3月22日
@@ -61,7 +65,23 @@ public class MusicTagService {
 	}
 
 	public void save(MusicTag musicTag) {
+		musicTag.setTs(DataUtils.getCurrectTime());
+		musicTag.setCreator(new User(getCurrentUserId()));
 		musicTagDao.save(musicTag);
 
 	}
+
+	public Page<MusicTag> getTagsBySong(Map<String, Object> searchParams, int pageNumber, int pageSize,
+			String sortType) {
+		PageRequest pageRequest = buildPageRequest(pageNumber, pageSize, sortType);
+		Specification<MusicTag> spec = buildSpecification(searchParams);
+		Page<MusicTag> musicTagList = musicTagDao.findAll(spec, pageRequest);
+		return musicTagList;
+	}
+
+	private Long getCurrentUserId() {
+		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+		return user.id;
+	}
+
 }

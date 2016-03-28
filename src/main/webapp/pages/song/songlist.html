@@ -17,7 +17,7 @@
 				<tbody>
 					<tr ng-repeat="song in songs">
 						<td ng-bind="$index+1"></td>
-						<td>{{song.songName}}</td>
+						<td ng-click="showSongDetail(song)">{{song.songName}}</td>
 						<td>{{song.singer.singerName}}</td>
 						<td>{{song.duration}}</td>
 						<td>{{song.album.albumName}}</td>

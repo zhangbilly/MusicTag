@@ -86,7 +86,7 @@ public class SongController {
 		Map<String, Object> searchParams = new HashMap<String, Object>();
 		String songName = request.getParameter(Song.SONGNAME);
 		if (StringUtils.isNotBlank(songName)) {
-			searchParams.put(Operator.EQ + "_" + Song.SONGNAME, songName);
+			searchParams.put(Operator.LIKE + "_" + Song.SONGNAME, songName);
 		}
 		Page<Song> songList = songService.getSongs(searchParams, pageNumber, pageSize, sortType);
 		json.successWithData("songs", songList);

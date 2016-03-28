@@ -21,6 +21,14 @@ MusicTag.service('tagService', ['$http', function($http){
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
 	}
+	this.getTagsBySong = function(songId){
+		return $http({
+			method:'GET',
+			url:ctx+getTagsUrl,
+			params:songId,
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		});
+	}
 }]);
 MusicTag.service('songService', ['$http', function($http){
 	this.getSongByTag = function(tagId){

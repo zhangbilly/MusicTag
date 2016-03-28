@@ -210,6 +210,7 @@ public class User extends IdEntity {
 	}
 
 	@Transient
+	@JsonIgnore
 	public Set<String> getRolesName() {
 		List<Role> roleList = getRoleList();
 		Set<String> set = new HashSet<String>();

@@ -1,5 +1,5 @@
 var createSongUrl = "/song"
-MusicTag.controller('SongController',function($scope,singerService,$timeout,$http,albumService,songService){
+MusicTag.controller('SongController',function($scope,singerService,$timeout,$http,albumService,songService,$state){
 	$scope.isCollapsed = true;
 	$scope.formData = {};
 	$scope.showSingerForm = false;
@@ -95,6 +95,12 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
             }, 800);
         }
     }, true);
+    //列表中点击歌手名
+    $scope.showSongDetail = function(song){
+    	$scope.csong = song;
+		$state.go("song.songdetail");
+		$scope.tags = songService.getSongByTag
+	};
     $scope.pageChange = function(){
     	songService.getSongs($scope.pagination.pn,$scope.pagination.ps).success(function(data){
 		if(data.status==1){
