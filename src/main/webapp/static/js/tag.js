@@ -13,23 +13,24 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 			data:$.param($scope.formData),
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).success(function(data){
-			console.log(data);
 			if(data.status==1){
 				$scope.isCollapsed = true;
-				$scope.$broadcast("AddTag");
+				$scope.$broadcast("AddTag");			
+				$scope.formData.tagName = "";
 			}else if(data.status==2){
 				$scope.createResult = data.msg;
-				$scope.ctag = data.tag;
-				$state.go("tag.tagdetail");
-				songService.getSongByTag().success(function(data){
-					if(data.status){
-						$scope.songs = data.songs;
-					}
-				})
+				$scope.existTag = data.tag;
 			}
 			else{
 				$scope.createResult = data.msg;
 			}
 		})
 	};
+	$scope.showExist = function(tag){
+		var data = {"tagid":tag.id};
+		$scope.formData.tagName = "";
+		$scope.isCollapsed = true;
+		$state.go("tag.tagdetail",data);
+		$scope.createResult = "";
+	}
 });

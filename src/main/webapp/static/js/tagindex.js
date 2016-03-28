@@ -10,7 +10,6 @@ MusicTag.controller('TagIndexController',function($scope,$http,$window,tagServic
 	tagService.getTags().success(function(data){
 		if(data.status){
 			$scope.tags = data.tags;
-			console.log(data.tags);
 		}
 		
 	});
@@ -20,7 +19,6 @@ MusicTag.controller('TagIndexController',function($scope,$http,$window,tagServic
 				$scope.tags = data.tags;
 				console.log(data.tags);
 			}
-			
 		});
 	});
 	$scope.showDetail = function(tag){

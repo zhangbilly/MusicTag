@@ -14,6 +14,7 @@ MusicTag.service('encryptService', function(){
 	}
 });
 MusicTag.service('tagService', ['$http', function($http){
+	
 	this.getTags = function(){
 		return $http({
 			method:'GET',
@@ -36,7 +37,8 @@ MusicTag.service('tagService', ['$http', function($http){
 			url:ctx+getTagByIdUrl+tagId,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		})
-	}
+	};
+	this.tags = {};
 }]);
 MusicTag.service('songService', ['$http', function($http){
 	this.songs = {};
