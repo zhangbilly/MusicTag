@@ -16,6 +16,7 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 			console.log(data);
 			if(data.status==1){
 				$scope.isCollapsed = true;
+				$scope.$broadcast("AddTag");
 			}else if(data.status==2){
 				$scope.createResult = data.msg;
 				$scope.ctag = data.tag;

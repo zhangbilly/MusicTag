@@ -39,6 +39,7 @@ MusicTag.service('tagService', ['$http', function($http){
 	}
 }]);
 MusicTag.service('songService', ['$http', function($http){
+	this.songs = {};
 	this.getSongByTag = function(tagId){
 		var data = {tagId:tagId};
 		return $http({
