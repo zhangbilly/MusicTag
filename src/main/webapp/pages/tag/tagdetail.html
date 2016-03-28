@@ -32,10 +32,10 @@
 			<tbody>
 				<tr ng-repeat="song in songs">
 					<td ng-bind="$index+1"></td>
-					<td>{{song.songName}}</td>
-					<td>{{song.singer}}</td>
-					<td>{{song.duration}}</td>
-					<td>{{song.album}}</td>
+					<td>{{song.song.songName}}</td>
+					<td>{{song.song.singer.singName}}</td>
+					<td>{{song.song.duration}}</td>
+					<td>{{song.song.album.albumName}}</td>
 				</tr>
 			</tbody>
 		</table>

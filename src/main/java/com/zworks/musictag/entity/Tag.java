@@ -10,9 +10,6 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 /**
  * @Description:
  * @author zhangqiang
@@ -51,7 +48,6 @@ public class Tag extends IdEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "creator")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	public User getCreator() {
 		return creator;
 	}

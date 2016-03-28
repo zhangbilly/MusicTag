@@ -14,6 +14,7 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 	tagService.getTags().success(function(data){
 		if(data.status){
 			$scope.tags = data.tags;
+			console.log(data.tags);
 		}
 		
 	})
