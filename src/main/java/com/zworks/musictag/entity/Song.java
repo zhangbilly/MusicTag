@@ -44,7 +44,8 @@ public class Song extends IdEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "singer_id")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
+	// @JsonIdentityInfo(generator =
+	// ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 	public Singer getSinger() {
 		return singer;
 	}
