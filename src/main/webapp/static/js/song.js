@@ -5,7 +5,7 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 	$scope.showSingerForm = false;
 	$scope.singers = {};
 	$scope.processForm = function(){
-		$scope.formData.duration = $filter('date')($scope.formData.duration,"hh:mm");
+		$scope.formData.duration = $filter('date')($scope.formData.duration,"HH:mm:ss");
 		$http({
 			method:'POST',
 			url:ctx+createSongUrl,

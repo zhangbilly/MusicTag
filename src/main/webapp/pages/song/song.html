@@ -26,7 +26,7 @@
 						</div>
 						<div class="form-group">
 							<label class="sr-only" for="duration">时长</label>
-							<input type="time" class="form-control" id="duration" name="duration" ng-model="formData.duration" placeholder="请输入歌曲时长" required></div>
+							<input type="time" class="form-control" id="duration" name="duration" ng-model="formData.duration" placeholder="请输入歌曲时长" step=1 min="00:00:00" max="01:00:00" required></div>
 						<div class="form-group">
 							<span id="helpBlock" class="help-block"></span>
 							<button type="submit" class="btn btn-default" ng-disabled="songForm.$invalid">确认</button>
