@@ -33,6 +33,7 @@ MusicTag.controller('TagDetailController', function(tagService,$http,$scope,$sta
 			console.log(data);
 			if(data.status==1){
 				console.log("添加成功");
+				$scope.showAddSong = true;
 				songService.getSongByTag($scope.ctag.id).success(function(data){
 					if(data.status){
 						if(data.songs.content.length>0)
@@ -49,6 +50,7 @@ MusicTag.controller('TagDetailController', function(tagService,$http,$scope,$sta
 				songService.getSongByName(newVal).success(function(data){
 					if(data.status){
 						if(data.songs.content.length>0){
+							$scope.AddSong = false;
 							$scope.items = data.songs.content;
 						}else{
 							$scope.AddSong = true;
