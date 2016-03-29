@@ -1,5 +1,6 @@
 package com.zworks.musictag.web.controller.tag;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,7 +96,7 @@ public class TagController {
 
 	@RequestMapping(value = "tagListbySong", method = RequestMethod.GET)
 	public @ResponseBody JsonResponse getSongListByTag(@RequestParam(value = "pn", defaultValue = "1") int pageNumber,
-			@RequestParam(value = "ps", defaultValue = "20") int pageSize,
+			@RequestParam(value = "ps", defaultValue = "50") int pageSize,
 			@RequestParam(value = "sortType", defaultValue = "auto") String sortType, Model model,
 			HttpServletRequest request) {
 		JsonResponse json = new JsonResponse();
@@ -104,7 +105,11 @@ public class TagController {
 		if (StringUtils.isNotBlank(songId)) {
 			searchParams.put(Operator.EQ + "_" + "song.id", songId);
 		}
-		Page<MusicTag> tagList = musicTagService.getTagsBySong(searchParams, pageNumber, pageSize, sortType);
+		Page<MusicTag> MusicTags = musicTagService.getTagsBySong(searchParams, pageNumber, pageSize, sortType);
+		List<Tag> tagList = new ArrayList<Tag>();
+		for (MusicTag musicTag : MusicTags.getContent()) {
+			tagList.add(musicTag.getTag());
+		}
 		json.successWithData("tags", tagList);
 		return json;
 	}

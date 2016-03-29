@@ -19,7 +19,7 @@
 						<td ng-bind="$index+1"></td>
 						<td ng-click="showSongDetail(song)">{{song.songName}}</td>
 						<td>{{song.singer.singerName}}</td>
-						<td>{{song.duration}}</td>
+						<td>{{song.duration | durationFilter}}</td>
 						<td>{{song.album.albumName}}</td>
 					</tr>
 				</tbody>

@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="pagetitle">{{csong.songName}}</div>
+	<p>歌手：{{csong.singer.singerName}}</p>
+	<p>所属专辑：{{csong.album.albumName}}</p>
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default">播放</button>
+		<button type="button" class="btn btn-default">评论</button>
+	</div>
+	<hr>
+</div>
+<div class="row">
+	<div class="pagetitle">标签</div>
+	<hr>
+	<span class="label label-info mylabel" ng-repeat="tag in tags" ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span>
+</div>
