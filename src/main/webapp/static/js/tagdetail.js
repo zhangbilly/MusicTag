@@ -2,6 +2,8 @@ MusicTag.controller('TagDetailController', function(tagService,$http,$scope,$sta
 	$scope.showAddSong = true;
 	$scope.canSubmit = false;
 	$scope.AddSong = false;
+	//歌曲已存在的提示
+	$scope.showExistTip = false;
 	tagService.getTagById($stateParams.tagid).success(function(data){
 		$scope.ctag = data.tag;
 		songService.getSongByTag($scope.ctag.id).success(function(data){
@@ -35,13 +37,17 @@ MusicTag.controller('TagDetailController', function(tagService,$http,$scope,$sta
 				console.log("添加成功");
 				$scope.showAddSong = true;
 				songService.getSongByTag($scope.ctag.id).success(function(data){
-					if(data.status){
+					if(data.status==1){
 						if(data.songs.content.length>0)
 							$scope.songs = data.songs.content;
 					}
+					
 				});
 			}
-		})
+		else if(data.status==2){
+			$scope.showExistTip = true;
+		}
+		});
 	};
 	$scope.$watch('searchData.song.songName', function (newVal, oldVal) {
 		if (newVal !== oldVal&&newVal!=undefined&&newVal!==""&&newVal!==$scope.choosedSongName) {
@@ -70,5 +76,9 @@ MusicTag.controller('TagDetailController', function(tagService,$http,$scope,$sta
     	$scope.canSubmit = true;
     	$scope.items = {};
     }
+    //关闭提示
+    $scope.closeAlert = function(){
+    	$scope.showExistTip = false;
+    };
     
 });

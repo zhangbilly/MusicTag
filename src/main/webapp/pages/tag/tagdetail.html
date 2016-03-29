@@ -14,6 +14,7 @@
 		<button type="submit" class="btn btn-default" ng-disabled="!canSubmit">确认</button>
 	</form>
 	<span id="helpBlock" class="help-block" ng-show="AddSong">歌曲不存在，去添加<i ng-click="jumpToSongList()">歌曲</i></span>
+	 <uib-alert type = "info" ng-show="showExistTip" dismiss-on-timeout="3000" close="closeAlert()">标签已经添加过了</uib-alert>
 			<div class="list-group">
 			<button type="button" class="list-group-item" ng-repeat="song in items" ng-click="chooseSong(song)">{{song.songName}}</button>
 		</div>

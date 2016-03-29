@@ -84,4 +84,10 @@ public class MusicTagService {
 		return user.id;
 	}
 
+	public boolean isMusicTagExist(Map<String, Object> searchParams) {
+		MusicTag musicTag = musicTagDao.findOne(buildSpecification(searchParams));
+		return musicTag == null ? false : true;
+
+	}
+
 }

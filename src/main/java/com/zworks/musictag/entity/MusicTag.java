@@ -18,6 +18,9 @@ public class MusicTag extends IdEntity {
 	private String ts;
 	private User creator;
 
+	public static final String tagId = "tag.id";
+	public static final String songId = "song.id";
+
 	@OneToOne
 	@JoinColumn(name = "pk_song")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
