@@ -57,4 +57,8 @@ public class SongService {
 		Song song = songDao.findOne(spec);
 		return song;
 	}
+
+	public Song getSongById(Long songId) {
+		return songDao.findOne(songId);
+	}
 }
