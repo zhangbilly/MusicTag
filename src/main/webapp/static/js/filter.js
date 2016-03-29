@@ -27,3 +27,12 @@ MusicTag.filter('searchSong', function(){
 	};
 
 });
+MusicTag.filter('durationFilter',function(){
+	return function(input) {
+    var pattern =new RegExp("^00(:\\d{2}){2}$");
+    if (pattern.test(input)) {
+      input = input.substring(3);
+    }
+    return input;
+  };
+});

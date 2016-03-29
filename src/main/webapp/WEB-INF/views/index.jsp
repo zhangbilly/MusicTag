@@ -118,5 +118,7 @@
 	<script src="${ctx}/static/js/tagdetail.js"></script>
 	<script src="${ctx}/static/js/tagindex.js"></script>
 	<script src="${ctx}/static/js/song.js"></script>
+	<script src="${ctx}/static/js/songpage.js"></script>
+	<script src="${ctx}/static/js/songdetail.js"></script>
 </body>
 </html>
