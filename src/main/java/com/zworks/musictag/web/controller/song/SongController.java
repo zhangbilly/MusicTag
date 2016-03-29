@@ -56,6 +56,17 @@ public class SongController {
 			song.getAlbum().setSinger(song.getSinger());
 			albumService.save(song.getAlbum());
 		}
+		// 校验歌曲是否存在
+		Map<String, Object> searchParams = new HashMap<String, Object>();
+		searchParams.put(Operator.EQ + "_" + Song.SONGNAME, song.getSongName());
+		searchParams.put(Operator.EQ + "_" + "singer.id", String.valueOf(song.getSinger().getId()));
+		searchParams.put(Operator.EQ + "_" + "album.id", String.valueOf(song.getAlbum().getId()));
+		Song existSong = songService.getSong(searchParams);
+		if (existSong != null) {
+			json.put("song", existSong);
+			json.setStatus(2);
+			return json;
+		}
 		songService.save(song);
 		json.successWithData("song", song);
 		return json;

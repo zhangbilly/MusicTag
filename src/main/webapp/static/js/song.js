@@ -17,17 +17,11 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
 				$scope.isCollapsed = true;
 				$scope.formData={};
 			}else if(data.status==2){
-				$scope.createResult = data.msg;
-				$scope.existTag = data.tag;
-				$state.go("tag.tagdetail");
-				songService.getSongByTag().success(function(data){
-					if(data.status){
-						$scope.songs = data.songs;
-					}
-				})
+				$scope.isSongExist = true;
+				$scope.existSong = data.song;
 			}
 			else{
-				$scope.createResult = data.msg;
+				$scope.createError = data.msg;
 			}
 		})
 	};
@@ -83,4 +77,11 @@ MusicTag.controller('SongController',function($scope,singerService,$timeout,$htt
             }, 800);
         }
     }, true);
+    $scope.showExist = function(){
+    	var data = {"songid":$scope.existSong.id};
+		$scope.formData.tagName = "";
+		$scope.isCollapsed = true;
+		$state.go("song.songdetail",data);
+		$scope.createResult = "";
+    }
 });

@@ -51,4 +51,10 @@ public class SongService {
 		Specification<Song> spec = DynamicSpecifications.bySearchFilter(filters.values(), Song.class);
 		return spec;
 	}
+
+	public Song getSong(Map<String, Object> searchParams) {
+		Specification<Song> spec = buildSpecification(searchParams);
+		Song song = songDao.findOne(spec);
+		return song;
+	}
 }
