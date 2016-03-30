@@ -20,5 +20,5 @@ MusicTag.controller('SongPageController',function($scope,singerService,$timeout,
 			$scope.totalItems = data.songs.totalElements;
 		}
 	});
-    }
+    };
 });

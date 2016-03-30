@@ -15,11 +15,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="song in songs">
+					<tr ng-repeat="song in songs" ng-mouseleave="showDuration = false" ng-mouseenter="showDuration = true">
 						<td ng-bind="$index+1"></td>
 						<td ng-click="showSongDetail(song)">{{song.songName}}</td>
-						<td>{{song.singer.singerName}}</td>
-						<td>{{song.duration | durationFilter}}</td>
+						<td >{{song.singer.singerName}}</td>
+						<td ng-show="!showDuration" style="width:116px;">{{song.duration | durationFilter}}</td>
+						<td ng-show="showDuration" style="width:116px;"><span class="glyphicon glyphicon-plus icon" aria-hidden="true" title="收藏到歌单"></span><span class="glyphicon glyphicon-tags icon" aria-hidden="true" title="添加标签"></span><span class="glyphicon glyphicon-download icon" aria-hidden="true" title="下载"></span><span class="glyphicon glyphicon-share icon" aria-hidden="true" title="分享"></span></td>
 						<td>{{song.album.albumName}}</td>
 					</tr>
 				</tbody>
