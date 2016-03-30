@@ -1,5 +1,5 @@
 var tagUrl = "/tag";
-var addMusicTag = "/musictag";
+var addtagformusicURL = "/addtagformusic";
 var tagDetailUrl = "/tagdetail"
 MusicTag.controller('TagController',function($scope,$http,$window,tagService,$state,songService,$timeout,$stateParams){
 	$scope.formData={};
@@ -33,4 +33,49 @@ MusicTag.controller('TagController',function($scope,$http,$window,tagService,$st
 		$state.go("tag.tagdetail",data);
 		$scope.createResult = "";
 	}
+});
+MusicTag.controller('AddTagController',function($scope, $uibModalInstance, csong,tagService,$http){
+  $scope.csong = csong;
+  $scope.searchData = {};
+  $scope.needRefresh = false;
+  tagService.getTagsBySong(csong.id).success(function(data){
+      if(data.status==1){
+          if(data.tags.length>0)
+					$scope.tags = data.tags;
+      }
+  });
+
+  $scope.cancel = function () {
+    $uibModalInstance.close($scope.needRefresh);
+  };
+  $scope.processForm = function(){
+      $scope.showError = false;
+      	var data = {
+			song:{
+				id:$scope.csong.id
+			},
+			tag:{
+				name:$scope.searchData.tagName
+			}
+		};
+		$http({
+			method:'POST',
+			url:ctx+addtagformusicURL,
+			data:data
+		}).success(function(data){
+			if(data.status==1){
+				//$scope.$broadcast("AddTag");			
+				$scope.searchData.tagName = "";
+                $scope.tags.push(data.tag);
+                $scope.needRefresh = true;
+			}else if(data.status==2){
+				$scope.createResult = data.msg;
+                $scope.showError = true;
+			}
+			else{
+				$scope.createResult = data.msg;
+                $scope.showError = true;
+			}
+		})
+	};
 });

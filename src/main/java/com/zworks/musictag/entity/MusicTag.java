@@ -20,6 +20,8 @@ public class MusicTag extends IdEntity {
 
 	public static final String tagId = "tag.id";
 	public static final String songId = "song.id";
+	public static final String TAGNAME = "tagName";
+	public static final String TAGTAGNAME = "tag.name";
 
 	@OneToOne
 	@JoinColumn(name = "pk_song")
