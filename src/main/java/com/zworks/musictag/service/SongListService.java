@@ -33,4 +33,8 @@ public class SongListService {
 
 	}
 
+	public SongList getSongListById(Long songListId) {
+		return songListDao.findOne(songListId);
+	}
+
 }

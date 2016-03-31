@@ -56,7 +56,7 @@ MusicTag.config(function($stateProvider, $urlRouterProvider) {
     })
     .state("songlist.songlistdetail", {
       url: "/songlistdetail/:songlistid",
-      controller: "SongDetailController",
+      controller: "SongListDetailController",
       templateUrl: "/" + projectName + "/pages/songlist/songlistdetail.html",
       onEnter: function($stateParams, $state) {
         if ($stateParams.songlistid == undefined || $stateParams.songlistid == "") {

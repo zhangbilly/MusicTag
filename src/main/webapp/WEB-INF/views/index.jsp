@@ -122,5 +122,6 @@
 	<script src="${ctx}/static/js/songdetail.js"></script>
 	<script src="${ctx}/static/js/songlist.js"></script>
 	<script src="${ctx}/static/js/playlist.js"></script>
+	<script src="${ctx}/static/js/songlistdetail.js"></script>
 </body>
 </html>

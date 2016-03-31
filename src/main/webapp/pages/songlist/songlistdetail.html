@@ -1,7 +1,34 @@
-<div>
-	<div class="row">
-		<span class="pagetitle">热门歌单</span>
-		<hr></div>
-	<div class="row">
-
+<div class="row">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="/musictag/static/images/cover/songlist_cover.jpg" alt="">
+        </div>
+        <div class="col-md-7">
+            <div>
+            <span class="label label-danger">歌单</span>
+            <span class="songtitle">{{csonglist.name}}</span>
+            </div>
+           
+	<img src="/musictag/static/images/avator/avator.jpg" alt="" height="35px" width="35px">
+	<p>所属专辑：<span>{{csong.album.albumName}}</span></p>
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default">播放</button>
+		<button type="button" class="btn btn-default">分享</button>
+		<button type="button" class="btn btn-default">下载</button>
+		<button type="button" class="btn btn-default" ng-click="addTag()">标签</button>
+        <button type="button" class="btn btn-default">评论</button>
+	</div>
+        </div>
+    </div>
+	
+	<hr>
+</div>
+<div class="row content-block">
+	<div class="pagetitle">标签</div>
+	<hr>
+	<span class="label label-info mylabel" ng-repeat="tag in tags" ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span>
+</div>
+<div class="row">
+	<div class="pagetitle">评论</div>
+	<hr>
 </div>
