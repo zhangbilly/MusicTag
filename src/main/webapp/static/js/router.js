@@ -46,6 +46,23 @@ MusicTag.config(function($stateProvider, $urlRouterProvider) {
     })
     .state("songlist", {
       url: "/songlist",
-      templateUrl: "/" + projectName + "/pages/songlist.html"
+      controller: "SongListController",
+      templateUrl: "/" + projectName + "/pages/songlist/songlist.html"
+    })
+    .state("songlist.playlist", {
+      url: "/playlist",
+      controller: "PlayListController",
+      templateUrl: "/" + projectName + "/pages/songlist/playlist.html"
+    })
+    .state("songlist.songlistdetail", {
+      url: "/songlistdetail/:songlistid",
+      controller: "SongDetailController",
+      templateUrl: "/" + projectName + "/pages/songlist/songlistdetail.html",
+      onEnter: function($stateParams, $state) {
+        if ($stateParams.songlistid == undefined || $stateParams.songlistid == "") {
+          $state.go("songlist.playlist");
+        }
+      }
+
     })
 });

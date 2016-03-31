@@ -58,7 +58,7 @@
 								<a href="#" ui-sref="song.songpage">音乐</a>
 							</li>
 							<li>
-								<a href="#" ui-sref="songlist">歌单</a>
+								<a href="#" ui-sref="songlist.playlist">歌单</a>
 							</li>
 
 						</ul>
@@ -120,5 +120,7 @@
 	<script src="${ctx}/static/js/song.js"></script>
 	<script src="${ctx}/static/js/songpage.js"></script>
 	<script src="${ctx}/static/js/songdetail.js"></script>
+	<script src="${ctx}/static/js/songlist.js"></script>
+	<script src="${ctx}/static/js/playlist.js"></script>
 </body>
 </html>
