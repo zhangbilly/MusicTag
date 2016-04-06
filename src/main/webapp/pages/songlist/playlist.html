@@ -4,7 +4,7 @@
 		<hr>
 		<div class="row">
 			<div class="col-md-3" ng-repeat="songlist in songlists">
-				<div class="thumbnail">
+				<div class="thumbnail" ng-click="showSongListDetail(songlist)">
 					<img src="/musictag/static/images/cover/songlist_cover.jpg" alt="..." width="140" height="140">
 					<div class="caption">
 						<p>{{songlist.name}}</p>
