@@ -1,7 +1,13 @@
 <div class="row">
 	<span class="pagetitle">热门标签</span>
-	<hr>
-</div>
+	<hr></div>
 <div class="row">
-	<span class="label label-info mylabel" ng-repeat="tag in tags" ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span>
+
+<!-- 	<span class="label label-primary mylabel" ng-repeat="tag in tags" ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span> -->
+
+	<ul class="list-inline">
+		<li ng-repeat="tag in tags" style="margin-bottom: 10px">
+			<span class="label label-primary mylabel"  ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span>
+		</li>
+	</ul>
 </div>
