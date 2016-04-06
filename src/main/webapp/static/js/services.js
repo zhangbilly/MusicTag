@@ -8,6 +8,9 @@ var getTagByIdUrl = "/tag/tag/";
 var getSongbyIdUrl = "/song/";
 var getTagsBySongUrl = "/tag/tagListbySong"
 var getSongListUrl = "/songlist/"
+//获取歌单
+var getSongListsURL = "/songlists";
+
 MusicTag.service('encryptService', function(){
 	this.encrypt = function(string){
 		var shaObj = new jsSHA("SHA-1", "TEXT");
@@ -119,5 +122,14 @@ MusicTag.service('songListService', ['$http', function($http){
 			url:ctx+getSongListUrl+songListId,
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 		});
-    }
+    };
+    this.getSongLists = function(pn,ps){
+		var data = {pn:pn,ps:ps};
+		return $http({
+			method:'GET',
+			url:ctx+getSongListsURL,
+			params:data,
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+		})
+	};
 }]);

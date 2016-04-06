@@ -26,6 +26,14 @@ public class SongList extends IdEntity {
 	private String trackCount;
 	private String coverImg;
 
+	public static final String NAME = "name";
+	public static final String DESCRIPTION = "description";
+	public static final String CREATOR = "creator";
+	public static final String CREATETIME = "createTime";
+	public static final String UPDATETIME = "updateTime";
+	public static final String TRACKCOUNT = "trackCount";
+	public static final String COVERIMG = "coverImg";
+
 	@NotBlank
 	public String getName() {
 		return name;
