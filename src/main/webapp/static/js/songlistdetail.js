@@ -1,3 +1,4 @@
+var UpdateSongListUrl = '/songlist/'
 MusicTag.controller('SongListDetailController', function($scope, $state, $stateParams,songListService,songService) {
     console.log($stateParams.songlistid);
     songListService.getSongListById($stateParams.songlistid).success(function(data) {
@@ -35,8 +36,33 @@ MusicTag.controller('SongListDetailController', function($scope, $state, $stateP
     }
 });
 //修改歌单信息的Controller
-MusicTag.controller('SongListInfoController', function($scope, $state, $stateParams,songListService){
+MusicTag.controller('SongListInfoController', function($scope, $state, $stateParams,songListService,$http){
 	songListService.getSongListById($stateParams.songlistid).success(function(data) {
         $scope.csonglist = data.songList;
     });
+    $scope.processForm = function(){
+    	$http({
+    		method:'PUT',
+    		url:ctx+UpdateSongListUrl+$scope.csonglist.id,
+    		data:$scope.csonglist
+
+    	}).success(function(data){
+    		if(data.status==1){
+    			$scope.csonglist = data.songlist;
+    			var data = {"songlistid":data.songlist.id};
+		        $state.go("songlist.songlistdetail",data);
+    		}
+    	})
+    };
+    $scope.editCover = function(){
+    	var data = {"songlistid":$scope.csonglist.id};
+		$state.go("songlist.editcover",data);
+    }
+});
+//修改歌单封面的Controller
+MusicTag.controller('SongListCoverController',function($scope, $state, $stateParams,songListService){
+	 songListService.getSongListById($stateParams.songlistid).success(function(data) {
+        $scope.csonglist = data.songList;
+    });
+	 
 });

@@ -65,14 +65,24 @@ MusicTag.config(function($stateProvider, $urlRouterProvider) {
       }
 
     })
-  .state("songlist.editsonglist", {
-    url: "/songlist/edit/:songlistid",
-    controller: "SongListInfoController",
-    templateUrl: "/" + projectName + "/pages/songlist/songlistedit.html",
-    onEnter: function($stateParams, $state) {
-      if ($stateParams.songlistid == undefined || $stateParams.songlistid == "") {
-        $state.go("songlist.playlist");
+    .state("songlist.editsonglist", {
+      url: "/songlist/edit/:songlistid",
+      controller: "SongListInfoController",
+      templateUrl: "/" + projectName + "/pages/songlist/songlistedit.html",
+      onEnter: function($stateParams, $state) {
+        if ($stateParams.songlistid == undefined || $stateParams.songlistid == "") {
+          $state.go("songlist.playlist");
+        }
       }
-    }
-  })
+    })
+    .state("songlist.editcover", {
+      url: "/songlist/cover/:songlistid",
+      controller: "SongListCoverController",
+      templateUrl: "/" + projectName + "/pages/songlist/songlistcover.html",
+      onEnter: function($stateParams, $state) {
+        if ($stateParams.songlistid == undefined || $stateParams.songlistid == "") {
+          $state.go("songlist.playlist");
+        }
+      }
+    })
 });

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zworks.musictag.entity.SongList;
 import com.zworks.musictag.service.SongListService;
+import com.zworks.musictag.utils.DataUtils;
 import com.zworks.musictag.utils.JsonResponse;
 
 /**
@@ -62,5 +64,20 @@ public class SongListController {
 		Page<SongList> songList = songListService.getSongLists(searchParams, pageNumber, pageSize, sortType);
 		json.successWithData("songlists", songList);
 		return json;
+	}
+
+	@RequestMapping(value = "songlist/{songlistid}", method = RequestMethod.PUT)
+	public @ResponseBody JsonResponse updateSongList(@PathVariable(value = "songlistid") Long songListId,
+			@RequestBody SongList songList) {
+		JsonResponse json = new JsonResponse();
+		SongList dbSongList = songListService.getSongListById(songListId);
+		// 更新歌单
+		dbSongList.setName(songList.getName());
+		dbSongList.setDescription(songList.getDescription());
+		dbSongList.setUpdateTime(DataUtils.getCurrectTime());
+		songListService.save(dbSongList);
+		json.successWithData("songlist", dbSongList);
+		return json;
+
 	}
 }

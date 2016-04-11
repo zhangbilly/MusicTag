@@ -1,5 +1,6 @@
 package com.zworks.musictag.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,7 +22,10 @@ public class SongList extends IdEntity {
 	private String name;
 	private String description;
 	private User creator;
+
+	@Column(updatable = false)
 	private String createTime;
+
 	private String updateTime;
 	private String trackCount;
 	private String coverImg;
@@ -52,7 +56,7 @@ public class SongList extends IdEntity {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "creator")
+	@JoinColumn(name = "creator", updatable = false)
 	public User getCreator() {
 		return creator;
 	}
