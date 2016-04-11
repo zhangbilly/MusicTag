@@ -7,10 +7,16 @@
             <div>
             <span class="label label-danger">歌单</span>
             <span class="songtitle">{{csonglist.name}}</span>
+            <div class="pull-right">
+            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            	<a href="" ng-click="editSongList()">编辑</a>
             </div>
-           
-	<img src="/musictag/static/images/avator/avator.jpg" alt="" height="35px" width="35px">
-	<p>所属专辑：<span>{{csong.album.albumName}}</span></p>
+            </div>
+            <div>
+            	<img src="/musictag/static/images/avator/avator.jpg" alt="" height="35px" width="35px">
+            	<span>{{csonglist.creator.userName}}</span>
+            	<span>{{formatDate(csonglist.createTime) | date:'yyyy-MM-dd'}} 创建</span>
+            </div>
 	<div class="btn-group" role="group" aria-label="...">
 		<button type="button" class="btn btn-default">播放</button>
 		<button type="button" class="btn btn-default">分享</button>
@@ -18,17 +24,15 @@
 		<button type="button" class="btn btn-default" ng-click="addTag()">标签</button>
         <button type="button" class="btn btn-default">评论</button>
 	</div>
+	<div ng-show="csonglist.description">
+		<p>介绍:{{csonglist.description}}</p>
+	</div>
         </div>
     </div>
 	
 	<hr>
 </div>
 <songlist></songlist>
-<div class="row content-block">
-	<div class="pagetitle">标签</div>
-	<hr>
-	<span class="label label-info mylabel" ng-repeat="tag in tags" ng-model="tag" ng-click="showDetail(tag)">{{tag.name}}</span>
-</div>
 <div class="row">
 	<div class="pagetitle">评论</div>
 	<hr>

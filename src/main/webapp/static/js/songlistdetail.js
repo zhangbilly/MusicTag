@@ -25,4 +25,18 @@ MusicTag.controller('SongListDetailController', function($scope, $state, $stateP
 		}
 	});
     };
+     $scope.formatDate = function(date){
+          var dateOut = new Date(date);
+          return dateOut;
+    };
+    $scope.editSongList = function(){
+    	var data = {"songlistid":$scope.csonglist.id};
+		$state.go("songlist.editsonglist",data);
+    }
+});
+//修改歌单信息的Controller
+MusicTag.controller('SongListInfoController', function($scope, $state, $stateParams,songListService){
+	songListService.getSongListById($stateParams.songlistid).success(function(data) {
+        $scope.csonglist = data.songList;
+    });
 });

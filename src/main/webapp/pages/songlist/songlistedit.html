@@ -1,0 +1,43 @@
+<div class="row">
+	<ol class="breadcrumb">
+		<li>
+			<a href="#">{{csonglist.name}}</a>
+		</li>
+		<li class="active">
+			<a href="#">编辑歌单</a>
+		</li>
+	</ol>
+	<hr>
+</div>
+<div class="row">
+<div class="col-md-6">
+	<form class="form-horizontal">
+  <div class="form-group">
+    <label for="songlistname" class="col-sm-2 control-label">歌单名</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="songlistname" placeholder="请输入歌单名" ng-model="formData.name" ng-value="csonglist.name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description" class="col-sm-2 control-label">介绍</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" rows="3" id="description" ng-model="formData.description">{{csonglist.description}}</textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">保存</button>
+      <button type="button" class="btn btn-default">取消</button>
+    </div>
+  </div>
+</form>
+</div>
+<div class="col-md-4 col-md-offset-1">
+	<div>
+		<img src="/musictag/static/images/cover/songlist_cover.jpg" alt="" width="140" height="140">
+		<br>
+		<a href="">编辑封面</a>
+	</div>
+</div>
+	
+</div>
