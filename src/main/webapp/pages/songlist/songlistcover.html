@@ -1,34 +1,35 @@
 <div class="row">
-	<ol class="breadcrumb">
-		<li>
-			<a href="#">{{csonglist.name}}</a>
-		</li>
-		<li >
-			<a href="#">编辑歌单</a>
-		</li>
-        <li class="active">
-      编辑封面
+  <ol class="breadcrumb">
+    <li>
+      <a href="#">{{csonglist.name}}</a>
     </li>
-	</ol>
-	<hr>
+    <li >
+      <a href="#">编辑歌单</a>
+    </li>
+    <li class="active">编辑封面</li>
+  </ol>
+  <hr></div>
+<div class="row">
+  <div id="uploadContainer" class="uploadContainer">
+    <a class="btn btn-default btn-lg " id="pickfiles" href="javascript:;"> <i class="glyphicon glyphicon-plus"></i>
+      <span>选择文件</span>
+    </a>
+  </div>
 </div>
 <div class="row">
-<div class="col-md-6">
-<div id="uploadContainer">
-                  <a class="btn btn-default btn-lg " id="pickfiles" href="javascript:;">
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span>选择文件</span>
-                </a>
-</div>
-
-
+  <p>歌单封面预览</p>
+  <div class="col-md-5">
+    <div class="editCover">
+      <img-crop image = "myImage" result-image="myCroppedImage" area-type="square"></img-crop>
+  </div>
 </div>
 <div class="col-md-4 col-md-offset-1">
-	<div>
-		<img ng-src="{{csonglist.coverImg}}" alt="" width="140" height="140">
-		<br>
-		<a href="">编辑封面</a>
-	</div>
+  <p>歌单封面预览</p>
+  <div class="mpre">
+    <img ng-src="{{myCroppedImage}}" alt="" width="100%" height="100%"></div>
+  <p>大尺寸封面（180x180像素）</p>
+  <div class="spre">
+    <img ng-src="{{myCroppedImage}}" alt="" width="100%" height="100%"></div>
+  <p>小尺寸封面（40x40像素）</p>
 </div>
-	
 </div>

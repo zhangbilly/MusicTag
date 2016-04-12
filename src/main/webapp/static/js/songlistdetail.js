@@ -70,15 +70,19 @@ MusicTag.controller('SongListInfoController', function($scope, $state, $statePar
 });
 //修改歌单封面的Controller
 MusicTag.controller('SongListCoverController', function($scope, $state, $stateParams, songListService,QiniuService) {
+	$scope.myImage='';
+	$scope.myCroppedImage='';
 	songListService.getSongListById($stateParams.songlistid).success(function(data) {
 		$scope.csonglist = data.songList;
 		if($scope.csonglist.coverImg==null){
-			$scope.csonglist.coverImg="/musictag/static/images/cover/songlist_cover.jpg";
+			$scope.myImage = "/musictag/static/images/cover/songlist_cover_322_322.jpg";
+			$scope.csonglist.coverImg=$scope.myCroppedImage;
 		}
 	});
 	QiniuService.getUpToken().success(function(data){
 		$scope.uptoken = data.uptoken;
 	});
+
 	var uploader = Qiniu.uploader({
 		runtimes: 'html5,flash,html4', // 上传模式,依次退化
 		browse_button: 'pickfiles', // 上传选择的点选按钮，**必需**
@@ -143,7 +147,8 @@ MusicTag.controller('SongListCoverController', function($scope, $state, $statePa
 				//var sourceLink = up.getOption('downtoken_url');
 				var res = angular.fromJson(info);
 				//var sourceLink = domain + info.key; //获取上传成功后的文件的Url
-				$scope.csonglist.coverImg = res.url;
+				$scope.myImage = res.url;
+				console.log($scope.csonglist.coverImg);
 			},
 			'Error': function(up, err, errTip) {
 				//上传出错时,处理相关的事情

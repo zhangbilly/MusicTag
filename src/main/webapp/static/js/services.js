@@ -1,4 +1,4 @@
-var MusicTag = angular.module("MusicTag", ['ui.router', 'ui.bootstrap']);
+var MusicTag = angular.module("MusicTag", ['ui.router', 'ui.bootstrap','ngImgCrop']);
 var getTagsUrl = "/tag/tags";
 var getSongByTagURL = "/songlistbytag";
 var getSingerUrl = "/singer/singers";

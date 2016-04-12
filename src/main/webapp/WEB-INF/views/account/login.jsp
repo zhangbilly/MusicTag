@@ -93,5 +93,7 @@
 	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
 	<script src="${ctx}/static/js/login.js"></script>
 	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
+	<!-- 截图-->
+	<script src="${ctx}/static/trd/ngImgCrop/ng-img-crop.js"></script>
 </body>
 </html>

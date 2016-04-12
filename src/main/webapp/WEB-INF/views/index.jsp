@@ -20,6 +20,8 @@
 	<link href="${ctx}/static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/common.css" rel="stylesheet">
 	<link href="${ctx}/static/css/tag.css" rel="stylesheet">
+	<link href="${ctx}/static/css/songlist.css" rel="stylesheet">
+	<link href="${ctx}/static/trd/ngImgCrop/ng-img-crop.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -118,6 +120,8 @@
 	 <script src="${ctx}/static/trd/plupload/moxie.js"></script>
 	 <script src="${ctx}/static/trd/plupload/plupload.dev.js"></script>
 	 <script src="${ctx}/static/trd/qiniu/qiniu.js"></script>
+	<!-- 截图-->
+	<script src="${ctx}/static/trd/ngImgCrop/ng-img-crop.js"></script>
 	<!-- 各个子页面的js-->
 	<script src="${ctx}/static/js/tag.js"></script>
 	<script src="${ctx}/static/js/tagdetail.js"></script>
