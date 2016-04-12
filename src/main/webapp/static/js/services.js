@@ -173,7 +173,7 @@ MusicTag.service('songListService', ['$http', function($http) {
 		})
 	};
 }]);
-MusicTag.service('UploadService', ['$http', function($http) {
+MusicTag.service('QiniuService', ['$http', function($http) {
 	this.getUpToken = function() {
 		return $http({
 			method: 'GET',
