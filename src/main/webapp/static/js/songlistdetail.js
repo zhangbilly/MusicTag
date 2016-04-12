@@ -1,4 +1,5 @@
-var UpdateSongListUrl = '/songlist/'
+var UpdateSongListUrl = '/songlist/';
+var UpdateSongListCoverUrl = '/songlist/cover/';
 var downloadURL = '/downloadurl';
 MusicTag.controller('SongListDetailController', function($scope, $state, $stateParams, songListService, songService) {
 	console.log($stateParams.songlistid);
@@ -69,17 +70,17 @@ MusicTag.controller('SongListInfoController', function($scope, $state, $statePar
 	}
 });
 //修改歌单封面的Controller
-MusicTag.controller('SongListCoverController', function($scope, $state, $stateParams, songListService,QiniuService) {
-	$scope.myImage='';
-	$scope.myCroppedImage='';
+MusicTag.controller('SongListCoverController', function($scope, $state, $stateParams, songListService, QiniuService,$http) {
+	$scope.myImage = '';
+	$scope.myCroppedImage = '';
 	songListService.getSongListById($stateParams.songlistid).success(function(data) {
 		$scope.csonglist = data.songList;
-		if($scope.csonglist.coverImg==null){
+		if ($scope.csonglist.coverImg == null) {
 			$scope.myImage = "/musictag/static/images/cover/songlist_cover_322_322.jpg";
-			$scope.csonglist.coverImg=$scope.myCroppedImage;
+			//$scope.csonglist.coverImg = $scope.myCroppedImage;
 		}
 	});
-	QiniuService.getUpToken().success(function(data){
+	QiniuService.getUpToken().success(function(data) {
 		$scope.uptoken = data.uptoken;
 	});
 
@@ -89,21 +90,21 @@ MusicTag.controller('SongListCoverController', function($scope, $state, $statePa
 		// 在初始化时，uptoken, uptoken_url, uptoken_func 三个参数中必须有一个被设置
 		// 切如果提供了多个，其优先级为 uptoken > uptoken_url > uptoken_func
 		// 其中 uptoken 是直接提供上传凭证，uptoken_url 是提供了获取上传凭证的地址，如果需要定制获取 uptoken 的过程则可以设置 uptoken_func
-		uptoken : $scope.uptoken, // uptoken 是上传凭证，由其他程序生成
-		uptoken_url: ctx + getUpTokenURL,         // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
+		uptoken: $scope.uptoken, // uptoken 是上传凭证，由其他程序生成
+		uptoken_url: ctx + getUpTokenURL, // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
 		// uptoken_func: function(file){    // 在需要获取 uptoken 时，该方法会被调用
 		//    // do something
 		//    return uptoken;
 		// },
 		get_new_uptoken: false, // 设置上传文件的时候是否每次都重新获取新的 uptoken
-		downtoken_url: ctx+downloadURL,
+		downtoken_url: ctx + downloadURL,
 		// Ajax请求downToken的Url，私有空间时使用,JS-SDK 将向该地址POST文件的key和domain,服务端返回的JSON必须包含`url`字段，`url`值为该文件的下载地址
 		//unique_names: true,              // 默认 false，key 为文件名。若开启该选项，JS-SDK 会为每个文件自动生成key（文件名）
 		// save_key: true,                  // 默认 false。若在服务端生成 uptoken 的上传策略中指定了 `sava_key`，则开启，SDK在前端将不对key进行任何处理
 		domain: 'http://7xsvs3.com1.z0.glb.clouddn.com', // bucket 域名，下载资源时用到，**必需**
 		container: 'uploadContainer', // 上传区域 DOM ID，默认是 browser_button 的父元素，
 		max_file_size: '100mb', // 最大文件体积限制
-		flash_swf_url: ctx+'/static/trd/plupload/Moxie.swf', //引入 flash,相对路径
+		flash_swf_url: ctx + '/static/trd/plupload/Moxie.swf', //引入 flash,相对路径
 		max_retries: 3, // 上传失败最大重试次数
 		dragdrop: true, // 开启可拖曳上传
 		drop_element: 'uploadContainer', // 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传
@@ -122,7 +123,7 @@ MusicTag.controller('SongListCoverController', function($scope, $state, $statePa
 		//        return size;
 		//    }
 		//},
-		multi_selection:false,//不可多选
+		multi_selection: false, //不可多选
 		init: {
 			'FilesAdded': function(up, files) {
 				plupload.each(files, function(file) {
@@ -148,6 +149,7 @@ MusicTag.controller('SongListCoverController', function($scope, $state, $statePa
 				var res = angular.fromJson(info);
 				//var sourceLink = domain + info.key; //获取上传成功后的文件的Url
 				$scope.myImage = res.url;
+				$scope.csonglist.coverImg = res.key+"_"+up.getOption('domain');
 				console.log($scope.csonglist.coverImg);
 			},
 			'Error': function(up, err, errTip) {
@@ -166,11 +168,45 @@ MusicTag.controller('SongListCoverController', function($scope, $state, $statePa
 			}
 		}
 	});
+	/**
+	 * Converts data uri to Blob. Necessary for uploading.
+	 * @see
+	 *   http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
+	 * @param  {String} dataURI
+	 * @return {Blob}
+	 */
+	var dataURItoBlob = function(dataURI) {
+		var binary = atob(dataURI.split(',')[1]);
+		var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+		var array = [];
+		for (var i = 0; i < binary.length; i++) {
+			array.push(binary.charCodeAt(i));
+		}
+		return new Blob([new Uint8Array(array)], {
+			type: mimeString
+		});
+	};
 
 	// domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置->基本设置->域名设置"查看获取
 
 	// uploader 为一个 plupload 对象，继承了所有 plupload 的方法，参考http://plupload.com/docs
-    uploader.bind('FileUploaded', function() {
-        console.log('hello man,a file is uploaded');
-    });
+	uploader.bind('FileUploaded', function() {
+		console.log('hello man,a file is uploaded');
+	});
+	$scope.updateCover = function() {
+		$http({
+			method: 'PUT',
+			url: ctx + UpdateSongListCoverUrl + $scope.csonglist.id,
+			data: $scope.csonglist
+
+		}).success(function(data) {
+			if (data.status == 1) {
+				$scope.csonglist = data.songlist;
+				var data = {
+					"songlistid": data.songlist.id
+				};
+				$state.go("songlist.editsonglist", data);
+			}
+		})
+	};
 });

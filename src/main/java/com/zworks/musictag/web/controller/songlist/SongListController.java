@@ -21,6 +21,7 @@ import com.zworks.musictag.entity.SongList;
 import com.zworks.musictag.service.SongListService;
 import com.zworks.musictag.utils.DataUtils;
 import com.zworks.musictag.utils.JsonResponse;
+import com.zworks.musictag.utils.QiniuUtils;
 
 /**
  * @date 2016年3月31日
@@ -50,6 +51,7 @@ public class SongListController {
 		if (songList == null) {
 			return json.failedWithReturn("歌单不存在");
 		}
+		songList.setCoverImg(QiniuUtils.getDownloadUrl(songList.getCoverImg()));
 		json.successWithData("songList", songList);
 		return json;
 	}
@@ -62,6 +64,9 @@ public class SongListController {
 		JsonResponse json = new JsonResponse();
 		Map<String, Object> searchParams = new HashMap<String, Object>();
 		Page<SongList> songList = songListService.getSongLists(searchParams, pageNumber, pageSize, sortType);
+		for (SongList sl : songList.getContent()) {
+			sl.setCoverImg(QiniuUtils.getDownloadUrl(sl.getCoverImg()));
+		}
 		json.successWithData("songlists", songList);
 		return json;
 	}
@@ -74,6 +79,20 @@ public class SongListController {
 		// 更新歌单
 		dbSongList.setName(songList.getName());
 		dbSongList.setDescription(songList.getDescription());
+		dbSongList.setUpdateTime(DataUtils.getCurrectTime());
+		songListService.save(dbSongList);
+		json.successWithData("songlist", dbSongList);
+		return json;
+
+	}
+
+	@RequestMapping(value = "songlist/cover/{songlistid}", method = RequestMethod.PUT)
+	public @ResponseBody JsonResponse updateSongListCover(@PathVariable(value = "songlistid") Long songListId,
+			@RequestBody SongList songList) {
+		JsonResponse json = new JsonResponse();
+		SongList dbSongList = songListService.getSongListById(songListId);
+		// 更新歌单封面
+		dbSongList.setCoverImg(songList.getCoverImg());
 		dbSongList.setUpdateTime(DataUtils.getCurrectTime());
 		songListService.save(dbSongList);
 		json.successWithData("songlist", dbSongList);

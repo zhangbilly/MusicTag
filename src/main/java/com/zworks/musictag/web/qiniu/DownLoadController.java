@@ -18,8 +18,8 @@ import com.zworks.musictag.utils.JsonResponse;
  **/
 @Controller
 public class DownLoadController {
-	private static final String ACCESS_KEY = "YT7qSN_byDL9wz98gdQoOpG3ye4vHK4bqCMTdLLQ";
-	private static final String SECRET_KEY = "tFI3gihztTlwIBYZaXyygeRTNo0BxKSi1tDQZaxR";
+	private static final String ACCESS_KEY = "ACCESS_KEY";
+	private static final String SECRET_KEY = "SECRET_KEY";
 
 	@RequestMapping(value = "downloadurl", method = RequestMethod.POST)
 	public @ResponseBody JsonResponse getDownToken(String key, String domain) {

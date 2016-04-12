@@ -1,0 +1,15 @@
+.editCover{
+	width: 322px;
+    height: 322px;
+}
+.uploadContainer{
+	padding: 26px 0 30px 0;
+}
+.mpre{/* 大尺寸封面*/
+	width: 180px;
+    height: 180px;
+}
+.spre{/*小尺寸封面*/
+    width: 40px;
+    height: 40px;
+}
