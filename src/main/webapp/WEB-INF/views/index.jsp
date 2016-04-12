@@ -114,6 +114,10 @@
 	<script src="${ctx}/static/js/filter.js"></script>
 	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
 	<script src="${ctx}/static/js/directive.js"></script>
+	<!-- 文件上传 -->
+	 <script src="${ctx}/static/trd/plupload/moxie.js"></script>
+	 <script src="${ctx}/static/trd/plupload/plupload.dev.js"></script>
+	 <script src="${ctx}/static/trd/qiniu/qiniu.js"></script>
 	<!-- 各个子页面的js-->
 	<script src="${ctx}/static/js/tag.js"></script>
 	<script src="${ctx}/static/js/tagdetail.js"></script>
