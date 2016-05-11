@@ -11,7 +11,9 @@ var getSongListUrl = "/songlist/"
 	//获取歌单
 var getSongListsURL = "/songlists";
 //获取上传token
-var getUpTokenURL = "/uptoken"
+var getUpTokenURL = "/uptoken";
+//添加评论
+var addCommentUrl = "/comment"
 
 MusicTag.service('encryptService', function() {
 	this.encrypt = function(string) {
@@ -178,6 +180,15 @@ MusicTag.service('QiniuService', ['$http', function($http) {
 		return $http({
 			method: 'GET',
 			url: ctx + getUpTokenURL
+		});
+	};
+}]);
+MusicTag.service('commentService', ['$http', function($http) {
+	this.addComment = function(data) {
+		return $http({
+			method: 'POST',
+			url: ctx + addCommentUrl,
+			data:data
 		});
 	};
 }]);

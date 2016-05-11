@@ -34,6 +34,17 @@
 </div>
 <songlist></songlist>
 <div class="row">
-	<div class="pagetitle">评论</div>
+	<div class="pagetitle">评论<span class="sub">共20条评论</span></div>
 	<hr>
+    <div class="comment">
+        <div class="avator">
+            <img src="/musictag/static/images/avator/avator.jpg" alt="">
+        </div>
+        <div class="inputarea">
+            <textarea class="commentarea" name="" id="" ng-model="comment.content"></textarea>
+        </div>
+        <div class="comment-footer">
+            <button class="btn btn-default" ng-click="addComment()">评论</button>
+        </div>
+    </div>
 </div>

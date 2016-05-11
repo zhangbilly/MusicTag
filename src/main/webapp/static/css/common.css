@@ -19,3 +19,24 @@
 .content-block{
     margin-bottom: 30px;
 }
+.sub{
+  margin: 9px 0 0 20px;
+  font-size: 14px;
+}
+.comment .avator img{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: -100px;
+}
+.inputarea{
+  margin-left: 62px;
+}
+.commentarea{
+    height: 50px;
+    width: 100%;
+    margin-right: -20px
+}
+.comment-footer .btn{
+  float: right;
+}

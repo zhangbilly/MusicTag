@@ -1,7 +1,7 @@
 var UpdateSongListUrl = '/songlist/';
 var UpdateSongListCoverUrl = '/songlist/cover/';
 var downloadURL = '/downloadurl';
-MusicTag.controller('SongListDetailController', function($scope, $state, $stateParams, songListService, songService) {
+MusicTag.controller('SongListDetailController', function($scope, $state, $stateParams, songListService, songService,commentService) {
 	console.log($stateParams.songlistid);
 	songListService.getSongListById($stateParams.songlistid).success(function(data) {
 		$scope.csonglist = data.songList;
@@ -9,6 +9,8 @@ MusicTag.controller('SongListDetailController', function($scope, $state, $stateP
 	$scope.pagination = {};
 	$scope.pagination.pn = 1;
 	$scope.pagination.ps = 10;
+	$scope.comment = {};
+	$scope.comment.content="";
 	songService.getSongs($scope.pagination.pn, $scope.pagination.ps).success(function(data) {
 		if (data.status == 1) {
 			$scope.songs = data.songs.content;
@@ -39,6 +41,13 @@ MusicTag.controller('SongListDetailController', function($scope, $state, $stateP
 			"songlistid": $scope.csonglist.id
 		};
 		$state.go("songlist.editsonglist", data);
+	};
+	$scope.addComment = function(){
+		$scope.comment.resourceId = $scope.csonglist.id;
+		$scope.comment.type = "SONGLIST";
+		commentService.addComment($scope.comment).success(function(data){
+
+		});
 	}
 });
 //修改歌单信息的Controller
