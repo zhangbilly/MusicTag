@@ -41,6 +41,14 @@ public class Comment extends IdEntity {
 
 	private String resourceId;
 
+	public static final String USER = "user";
+	public static final String TIME = "time";
+	public static final String LIKEDCOUNT = "likedCount";
+	public static final String CONTENT = "content";
+	public static final String BEREPLIED = "beReplied";
+	public static final String TYPE = "type";
+	public static final String RESOURCEID = "resourceId";
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", updatable = false)
 	public User getUser() {

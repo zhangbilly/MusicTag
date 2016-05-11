@@ -14,6 +14,7 @@ var getSongListsURL = "/songlists";
 var getUpTokenURL = "/uptoken";
 //添加评论
 var addCommentUrl = "/comment"
+var getComments = "/comment/list";
 
 MusicTag.service('encryptService', function() {
 	this.encrypt = function(string) {
@@ -190,5 +191,19 @@ MusicTag.service('commentService', ['$http', function($http) {
 			url: ctx + addCommentUrl,
 			data:data
 		});
+	};
+	this.getComments = function(resourceId,type){
+		var data = {
+			resourceId: resourceId,
+			type: type
+		};
+		return $http({
+			method: 'GET',
+			url: ctx + getComments,
+			params: data,
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			}
+		})
 	};
 }]);

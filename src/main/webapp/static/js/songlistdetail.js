@@ -5,6 +5,13 @@ MusicTag.controller('SongListDetailController', function($scope, $state, $stateP
 	console.log($stateParams.songlistid);
 	songListService.getSongListById($stateParams.songlistid).success(function(data) {
 		$scope.csonglist = data.songList;
+		commentService.getComments($scope.csonglist.id,"SONGLIST").success(function(data){
+			if(data.status==1){
+				$scope.comments = data.comments.content;
+				$scope.totalComment = data.comments.totalElements;
+			}
+			
+		});
 	});
 	$scope.pagination = {};
 	$scope.pagination.pn = 1;
@@ -46,7 +53,7 @@ MusicTag.controller('SongListDetailController', function($scope, $state, $stateP
 		$scope.comment.resourceId = $scope.csonglist.id;
 		$scope.comment.type = "SONGLIST";
 		commentService.addComment($scope.comment).success(function(data){
-
+			$scope.comments.push(data.comment);
 		});
 	}
 });

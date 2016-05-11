@@ -40,3 +40,30 @@
 .comment-footer .btn{
   float: right;
 }
+.comment{
+    padding: 15px 0;
+    border-top: 1px dotted #ccc;
+}
+.comment .head{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: -100px;
+}
+.comment .head img{
+    vertical-align: middle;
+}
+.comment .contentwrap{
+  margin-left: 60px;
+}
+.contentwrap .content{
+      line-height: 20px;
+}
+.time{
+    float: left;
+    margin: 0 !important;
+}
+.contentwrap .content-foot{
+      margin-top: 15px;
+    text-align: right;
+}
