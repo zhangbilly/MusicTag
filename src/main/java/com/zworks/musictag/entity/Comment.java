@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zworks.musictag.entity.enumerate.CommentType;
 
 /**
@@ -86,6 +87,7 @@ public class Comment extends IdEntity {
 		this.beReplied = beReplied;
 	}
 
+	@JsonIgnore
 	@Enumerated(EnumType.STRING)
 	public CommentType getType() {
 		return type;
@@ -95,6 +97,7 @@ public class Comment extends IdEntity {
 		this.type = type;
 	}
 
+	@JsonIgnore
 	public String getResourceId() {
 		return resourceId;
 	}
