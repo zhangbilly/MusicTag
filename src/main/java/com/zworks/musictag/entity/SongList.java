@@ -1,9 +1,12 @@
 package com.zworks.musictag.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -23,12 +26,15 @@ public class SongList extends IdEntity {
 	private String description;
 	private User creator;
 
-	@Column(updatable = false)
+	
 	private String createTime;
 
 	private String updateTime;
-	private String trackCount;
+	private int trackCount;
 	private String coverImg;
+	
+	
+	private List<SongAndList> songs;
 
 	public static final String NAME = "name";
 	public static final String DESCRIPTION = "description";
@@ -38,6 +44,15 @@ public class SongList extends IdEntity {
 	public static final String TRACKCOUNT = "trackCount";
 	public static final String COVERIMG = "coverImg";
 
+	/**
+	 * 
+	 */
+	public SongList() {
+		// TODO Auto-generated constructor stub
+	}
+	public SongList(Long id){
+		this.id=id;
+	}
 	@NotBlank
 	public String getName() {
 		return name;
@@ -64,7 +79,7 @@ public class SongList extends IdEntity {
 	public void setCreator(User creator) {
 		this.creator = creator;
 	}
-
+	@Column(updatable = false)
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -81,14 +96,6 @@ public class SongList extends IdEntity {
 		this.updateTime = updateTime;
 	}
 
-	public String getTrackCount() {
-		return trackCount;
-	}
-
-	public void setTrackCount(String trackCount) {
-		this.trackCount = trackCount;
-	}
-
 	public String getCoverImg() {
 		return coverImg;
 	}
@@ -96,5 +103,20 @@ public class SongList extends IdEntity {
 	public void setCoverImg(String coverImg) {
 		this.coverImg = coverImg;
 	}
+	@OneToMany(mappedBy="songList")
+	public List<SongAndList> getSongs() {
+		return songs;
+	}
 
+	public void setSongs(List<SongAndList> songs) {
+		this.songs = songs;
+	}
+
+	public int getTrackCount() {
+		return trackCount;
+	}
+
+	public void setTrackCount(int trackCount) {
+		this.trackCount = trackCount;
+	}
 }

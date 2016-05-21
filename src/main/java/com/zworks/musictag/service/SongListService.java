@@ -2,6 +2,8 @@ package com.zworks.musictag.service;
 
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,8 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springside.modules.persistence.DynamicSpecifications;
 import org.springside.modules.persistence.SearchFilter;
 
+import com.zworks.musictag.entity.SongAndList;
 import com.zworks.musictag.entity.SongList;
 import com.zworks.musictag.entity.User;
+import com.zworks.musictag.repository.SongAndListDao;
 import com.zworks.musictag.repository.SongListDao;
 import com.zworks.musictag.service.ShiroDbRealm.ShiroUser;
 import com.zworks.musictag.utils.DataUtils;
@@ -31,6 +35,8 @@ import com.zworks.musictag.utils.DataUtils;
 public class SongListService {
 	@Autowired
 	private SongListDao songListDao;
+	@Autowired
+	private SongAndListDao songAndListDao;
 
 	public SongList save(SongList songList) {
 		if (songList.getId() == null) {
@@ -65,6 +71,27 @@ public class SongListService {
 		Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
 		Specification<SongList> spec = DynamicSpecifications.bySearchFilter(filters.values(), SongList.class);
 		return spec;
+	}
+
+	/**
+	 * @param songList
+	 * @return
+	 */
+	@Transactional
+	public SongList addSongList(SongList songList) {
+		songList.setCreateTime(DataUtils.getCurrectTime());
+		if(songList.getSongs()!=null){
+			songList.setTrackCount(songList.getSongs().size());
+		}
+		songListDao.save(songList);
+		if(songList.getSongs()!=null){
+			for(SongAndList song:songList.getSongs()){
+				song.setAddTime(System.currentTimeMillis());
+				song.setSongList(new SongList(songList.getId()));
+			}
+		}
+		songAndListDao.save(songList.getSongs());
+		return songList;
 	}
 
 }
