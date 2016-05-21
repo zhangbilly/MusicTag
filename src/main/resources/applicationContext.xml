@@ -29,6 +29,7 @@
 			<props>
 				<!-- 命名规则 My_NAME->MyName -->
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 			</props>
 		</property>
 	</bean>
