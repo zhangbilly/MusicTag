@@ -1,5 +1,5 @@
 var registerUrl = "/register";
-MusicTag.controller('RegisterController',function($scope,$http,$window,encryptService){
+Register.controller('RegisterController',function($scope,$http,$window,encryptService){
 	$scope.formData={};
 	$scope.result={};
 	$scope.ctx = ctx;
@@ -24,7 +24,7 @@ MusicTag.controller('RegisterController',function($scope,$http,$window,encryptSe
 	};
 });
 // 密码验证directive
-MusicTag.directive('pwCheck', [function () {
+Register.directive('pwCheck', [function () {
 	return {
 		require: 'ngModel',
 		link: function (scope, elem, attrs, ctrl) {
@@ -39,7 +39,7 @@ MusicTag.directive('pwCheck', [function () {
 	}
 }]);
 //密码强度directive
-MusicTag.directive('checkStrength', function () {
+Register.directive('checkStrength', function () {
 
     return {
         replace: false,

@@ -1,0 +1,14 @@
+.name{
+	float: left;
+    margin-top: 3px;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 30px;
+}
+.edit{
+	float: right;
+    margin-top: 4px;
+}
+.userinfo{
+	border-bottom: 1px solid #ddd;
+}

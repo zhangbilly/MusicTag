@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="renderer" content="webkit">
+  <title>注册</title>
+
+  <!-- Bootstrap -->
+  <link href="../static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/common.css" rel="stylesheet">
+  <link href="tmp.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+ <body ng-controller="stageController">
+  <div class="container vertical-center">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 panel panel-default">
+        <div id="messages" ng-show="message">{{ message }}</div>
+          
+        <form name="myForm" novalidate>
+          <label for="pw">Type a password</label><br/>
+            <input type="password" ng-model="pw" name="pw" id="pw" />
+            <ul id="strength" check-strength="pw"></ul>
+        </form>   
+
+      </div>
+      <!-- //main content --> </div>
+    <!-- //row --> </div>
+  <!-- //container -->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="../static/jquery/jquery-2.2.0.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+  <script src="../static/angular-1.3.9/angular.js"></script>
+  <script src="tem.js"></script>
+</body>
+</html>

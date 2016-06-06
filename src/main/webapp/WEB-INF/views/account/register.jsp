@@ -135,13 +135,8 @@
 	<script src="${ctx}/static/jquery/jquery-2.2.0.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-		<script src="${ctx}/static/angular-1.4.8/angular.min.js"></script>
-	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
-	<script src="${ctx}/static/angular-ui/ui-bootstrap-1.2.4.min.js"></script>
-	<script src="${ctx}/static/angular-1.4.8/angular-animate.min.js"></script>
-	<script src="${ctx}/static/angular-1.4.8/angular-touch.min.js"></script>
+	<script src="${ctx}/static/angular-1.4.8/angular.min.js"></script>
 	<script src="${ctx}/static/js/services.js"></script>
-	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
 	<script src="${ctx}/static/js/register.js"></script>
 	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
 </body>

@@ -1,0 +1,21 @@
+<div class="commentlist">
+	<h3>最新评论</h3>
+	<div ng-repeat="comment in comments" class="comment">
+		<div class="head">
+			<a href=""><img src="" alt=""></a>
+		</div>
+		<div class="contentwrap">
+			<div>
+				<div class="content">
+					<a href="">{{comment.user.userName}}</a>
+					：{{comment.content}}
+				</div>
+			</div>
+			<div class="content-foot">
+				<div class="time">
+					{{comment.time| date : 'yyyy-MM-dd hh:mm:ss'}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
