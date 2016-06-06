@@ -1,15 +1,8 @@
 package com.zworks.musictag.entity;
 
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @date 2016年3月31日
@@ -21,39 +14,27 @@ import org.hibernate.validator.constraints.NotBlank;
  **/
 @Entity
 @Table(name = "songlist")
-public class SongList extends IdEntity {
+public class SongList {
+	@Id
+	private String id;
 	private String name;
 	private String description;
-	private User creator;
+	private String creatorId;
 
-	
-	private String createTime;
+	private Long createTime;
 
-	private String updateTime;
-	private int trackCount;
+	private Long updateTime;
+	private Integer trackCount;
 	private String coverImg;
-	
-	
-	private List<SongAndList> songs;
 
-	public static final String NAME = "name";
-	public static final String DESCRIPTION = "description";
-	public static final String CREATOR = "creator";
-	public static final String CREATETIME = "createTime";
-	public static final String UPDATETIME = "updateTime";
-	public static final String TRACKCOUNT = "trackCount";
-	public static final String COVERIMG = "coverImg";
+	public String getId() {
+		return id;
+	}
 
-	/**
-	 * 
-	 */
-	public SongList() {
-		// TODO Auto-generated constructor stub
+	public void setId(String id) {
+		this.id = id;
 	}
-	public SongList(Long id){
-		this.id=id;
-	}
-	@NotBlank
+
 	public String getName() {
 		return name;
 	}
@@ -70,30 +51,12 @@ public class SongList extends IdEntity {
 		this.description = description;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "creator", updatable = false)
-	public User getCreator() {
-		return creator;
+	public String getCreatorId() {
+		return creatorId;
 	}
 
-	public void setCreator(User creator) {
-		this.creator = creator;
-	}
-	@Column(updatable = false)
-	public String getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-
-	public String getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
+	public void setCreatorId(String creatorId) {
+		this.creatorId = creatorId;
 	}
 
 	public String getCoverImg() {
@@ -103,20 +66,29 @@ public class SongList extends IdEntity {
 	public void setCoverImg(String coverImg) {
 		this.coverImg = coverImg;
 	}
-	@OneToMany(mappedBy="songList")
-	public List<SongAndList> getSongs() {
-		return songs;
-	}
 
-	public void setSongs(List<SongAndList> songs) {
-		this.songs = songs;
-	}
-
-	public int getTrackCount() {
+	public Integer getTrackCount() {
 		return trackCount;
 	}
 
-	public void setTrackCount(int trackCount) {
+	public void setTrackCount(Integer trackCount) {
 		this.trackCount = trackCount;
 	}
+
+	public Long getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
+
+	public Long getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Long updateTime) {
+		this.updateTime = updateTime;
+	}
+
 }

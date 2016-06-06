@@ -4,14 +4,8 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @Description:
@@ -21,19 +15,22 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name = "song")
-public class Song extends IdEntity {
+public class Song {
+	@Id
+	private String id;
 	private String songName;
-	private Singer singer;
-	private Album album;
+	private String singerId;
+	private String albumId;
 	private String duration;
 
-	public static final String SONGID = "songId";
-	public static final String SONGNAME = "songName";
-	public static final String SINGER = "singer";
-	public static final String ALBUM = "album";
-	public static final String DURATION = "duration";
+	public String getId() {
+		return id;
+	}
 
-	@NotBlank
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getSongName() {
 		return songName;
 	}
@@ -42,27 +39,20 @@ public class Song extends IdEntity {
 		this.songName = songName;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "singer_id")
-	// @JsonIdentityInfo(generator =
-	// ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-	public Singer getSinger() {
-		return singer;
+	public String getSingerId() {
+		return singerId;
 	}
 
-	public void setSinger(Singer singer) {
-		this.singer = singer;
+	public void setSingerId(String singerId) {
+		this.singerId = singerId;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "album_id")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-	public Album getAlbum() {
-		return album;
+	public String getAlbumId() {
+		return albumId;
 	}
 
-	public void setAlbum(Album album) {
-		this.album = album;
+	public void setAlbumId(String albumId) {
+		this.albumId = albumId;
 	}
 
 	public String getDuration() {

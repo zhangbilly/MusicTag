@@ -4,11 +4,8 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @Description:
@@ -18,17 +15,21 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Entity
 @Table(name = "tag")
-public class Tag extends IdEntity {
+public class Tag {
+	@Id
+	private String id;
 	private String name;
 	private String createTime;
-	private User creator;
+	private String creatorId;
 
-	public static final String TAGID = "tagId";
-	public static final String NAME = "name";
-	public static final String CREATETIME = "createTime";
-	public static final String CREATOR = "creator";
+	public String getId() {
+		return id;
+	}
 
-	@NotBlank
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -37,7 +38,6 @@ public class Tag extends IdEntity {
 		this.name = name;
 	}
 
-	@NotBlank
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -46,13 +46,12 @@ public class Tag extends IdEntity {
 		this.createTime = createTime;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "creator")
-	public User getCreator() {
-		return creator;
+	public String getCreatorId() {
+		return creatorId;
 	}
 
-	public void setCreator(User creator) {
-		this.creator = creator;
+	public void setCreatorId(String creatorId) {
+		this.creatorId = creatorId;
 	}
+
 }

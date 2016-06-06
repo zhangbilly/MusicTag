@@ -1,64 +1,41 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "musictag")
-public class MusicTag extends IdEntity {
-	private Song song;
-	private String songName;
-	private Tag tag;
-	private String tagName;
+public class MusicTag {
+	@Id
+	private String Id;
+	private String songId;
+	private String tagId;
 	private String ts;
-	private User creator;
+	private String creatorId;
 
-	public static final String tagId = "tag.id";
-	public static final String songId = "song.id";
-	public static final String TAGNAME = "tagName";
-	public static final String TAGTAGNAME = "tag.name";
-
-	@OneToOne
-	@JoinColumn(name = "pk_song")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-	public Song getSong() {
-		return song;
+	public String getId() {
+		return Id;
 	}
 
-	public void setSong(Song song) {
-		this.song = song;
+	public void setId(String id) {
+		Id = id;
 	}
 
-	public String getSongName() {
-		return songName;
+	public String getSongId() {
+		return songId;
 	}
 
-	public void setSongName(String songName) {
-		this.songName = songName;
+	public void setSongId(String songId) {
+		this.songId = songId;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "pk_tag")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-	public Tag getTag() {
-		return tag;
+	public String getTagId() {
+		return tagId;
 	}
 
-	public void setTag(Tag tag) {
-		this.tag = tag;
-	}
-
-	public String getTagName() {
-		return tagName;
-	}
-
-	public void setTagName(String tagName) {
-		this.tagName = tagName;
+	public void setTagId(String tagId) {
+		this.tagId = tagId;
 	}
 
 	public String getTs() {
@@ -69,15 +46,12 @@ public class MusicTag extends IdEntity {
 		this.ts = ts;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "creator")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-	public User getCreator() {
-		return creator;
+	public String getCreatorId() {
+		return creatorId;
 	}
 
-	public void setCreator(User creator) {
-		this.creator = creator;
+	public void setCreatorId(String creatorId) {
+		this.creatorId = creatorId;
 	}
 
 }

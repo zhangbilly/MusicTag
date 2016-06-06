@@ -1,18 +1,9 @@
 package com.zworks.musictag.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zworks.musictag.entity.enumerate.CommentType;
 
 /**
@@ -25,9 +16,11 @@ import com.zworks.musictag.entity.enumerate.CommentType;
  **/
 @Entity
 @Table(name = "comments")
-public class Comment extends IdEntity {
+public class Comment {
+	@Id
+	private String id;
 
-	private User user;
+	private String userId;
 
 	private Long time;
 
@@ -35,7 +28,7 @@ public class Comment extends IdEntity {
 
 	private String content;
 
-	private Comment beReplied;
+	private String beReplied;
 
 	private CommentType type;
 
@@ -49,17 +42,14 @@ public class Comment extends IdEntity {
 	public static final String TYPE = "type";
 	public static final String RESOURCEID = "resourceId";
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", updatable = false)
-	public User getUser() {
-		return user;
+	public String getId() {
+		return id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	@Column(updatable = false)
 	public Long getTime() {
 		return time;
 	}
@@ -76,7 +66,6 @@ public class Comment extends IdEntity {
 		this.likedCount = likedCount;
 	}
 
-	@NotBlank
 	public String getContent() {
 		return content;
 	}
@@ -85,18 +74,6 @@ public class Comment extends IdEntity {
 		this.content = content;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = true)
-	@JoinColumn(name = "be_replied")
-	public Comment getBeReplied() {
-		return beReplied;
-	}
-
-	public void setBeReplied(Comment beReplied) {
-		this.beReplied = beReplied;
-	}
-
-	@JsonIgnore
-	@Enumerated(EnumType.STRING)
 	public CommentType getType() {
 		return type;
 	}
@@ -105,13 +82,28 @@ public class Comment extends IdEntity {
 		this.type = type;
 	}
 
-	@JsonIgnore
 	public String getResourceId() {
 		return resourceId;
 	}
 
 	public void setResourceId(String resourceId) {
 		this.resourceId = resourceId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public void setBeReplied(String beReplied) {
+		this.beReplied = beReplied;
+	}
+
+	public String getBeReplied() {
+		return beReplied;
 	}
 
 }

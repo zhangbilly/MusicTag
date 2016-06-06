@@ -1,9 +1,8 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @date 2016年3月10日
@@ -16,7 +15,9 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "role")
-public class Role extends IdEntity {
+public class Role {
+	@Id
+	private String id;
 	private String roleCode;
 	private String roleName;
 	private String description;
@@ -25,7 +26,14 @@ public class Role extends IdEntity {
 	public static final String ROLENAME = "roleName";
 	public static final String DESCRIPTION = "description";
 
-	@NotBlank
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getRoleCode() {
 		return roleCode;
 	}
@@ -34,7 +42,6 @@ public class Role extends IdEntity {
 		this.roleCode = roleCode;
 	}
 
-	@NotBlank
 	public String getRoleName() {
 		return roleName;
 	}
@@ -50,4 +57,5 @@ public class Role extends IdEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }

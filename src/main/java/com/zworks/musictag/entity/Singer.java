@@ -1,30 +1,26 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "singer")
-public class Singer extends IdEntity {
+public class Singer {
+	@Id
+	private String id;
 	private String singerName;
 	private String alias;
 	private String birthday;
 	private int sex;
-	private String pkCountry;
+	private String countryId;
 	private String detail;
 
-	public static final String SINGERNAME = "singerName";
-	public static final String ALIAS = "alias";
-	public static final String BIRTHDAY = "birthday";
-	public static final String SEX = "sex";
-	public static final String PKCOUNTRY = "pkCountry";
-	public static final String DETAIL = "detail";
-
-	public Singer() {
-
+	public String getId() {
+		return id;
 	}
 
-	public Singer(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -60,14 +56,6 @@ public class Singer extends IdEntity {
 		this.sex = sex;
 	}
 
-	public String getPkCountry() {
-		return pkCountry;
-	}
-
-	public void setPkCountry(String pkCountry) {
-		this.pkCountry = pkCountry;
-	}
-
 	public String getDetail() {
 		return detail;
 	}
@@ -75,4 +63,13 @@ public class Singer extends IdEntity {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
+
+	public String getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(String countryId) {
+		this.countryId = countryId;
+	}
+
 }

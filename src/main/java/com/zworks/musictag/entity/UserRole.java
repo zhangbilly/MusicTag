@@ -1,11 +1,8 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @date 2016年3月10日
@@ -17,33 +14,37 @@ import org.hibernate.validator.constraints.NotBlank;
  **/
 @Entity
 @Table(name = "user_role")
-public class UserRole extends IdEntity {
-	private User user;
-	private Role role;
+public class UserRole {
+	@Id
+	private String id;
+	private String userId;
+	private String roleId;
 	private String grantTime;
 
 	public static final String GRANTTIME = "grantTime";
 
-	@NotBlank
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	public User getUser() {
-		return user;
+	public String getId() {
+		return id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	@NotBlank
-	@OneToOne
-	@JoinColumn(name = "role_id")
-	public Role getRole() {
-		return role;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getGrantTime() {

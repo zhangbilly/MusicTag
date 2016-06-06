@@ -1,18 +1,16 @@
 package com.zworks.musictag.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "album")
-public class Album extends IdEntity {
+public class Album {
+	@Id
+	private String id;
 	private String albumName;
-	private Singer singer;
+	private String singerId;
 	private String releaseTime;
 	private String description;
 
@@ -25,7 +23,11 @@ public class Album extends IdEntity {
 
 	}
 
-	public Album(long id) {
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -37,15 +39,12 @@ public class Album extends IdEntity {
 		this.albumName = albumName;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "pk_singer")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-	public Singer getSinger() {
-		return singer;
+	public String getSingerId() {
+		return singerId;
 	}
 
-	public void setSinger(Singer singer) {
-		this.singer = singer;
+	public void setSingerId(String singerId) {
+		this.singerId = singerId;
 	}
 
 	public String getReleaseTime() {
@@ -63,4 +62,5 @@ public class Album extends IdEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }

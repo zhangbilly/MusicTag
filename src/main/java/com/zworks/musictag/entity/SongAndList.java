@@ -3,11 +3,10 @@
  */
 package com.zworks.musictag.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 /**
  * @Description:
@@ -17,46 +16,57 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "songandlist")
-public class SongAndList extends IdEntity{
-	
-	private SongList songList;
+public class SongAndList {
+	@Id
+	private String id;
 
-	private Song song;
+	@Column(name = "songlist_id")
+	private String songListId;
+
+	private String songId;
 
 	private Integer position;
-	
+
 	private Long addTime;
-	
-	@ManyToOne
-	@JoinColumn(name="songlist_id")
-	public SongList getSongList() {
-		return songList;
-	}
-	public void setSongList(SongList songList) {
-		this.songList = songList;
-	}
-	@ManyToOne
-	@JoinColumn(name="song_id")
-	public Song getSong() {
-		return song;
-	}
-	public void setSong(Song song) {
-		this.song = song;
+
+	public String getId() {
+		return id;
 	}
 
-	@NotNull
-	public Long getAddTime() {
-		return addTime;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void setAddTime(Long addTime) {
-		this.addTime = addTime;
+
+	public String getSongListId() {
+		return songListId;
 	}
+
+	public void setSongListId(String songListId) {
+		this.songListId = songListId;
+	}
+
+	public String getSongId() {
+		return songId;
+	}
+
+	public void setSongId(String songId) {
+		this.songId = songId;
+	}
+
 	public Integer getPosition() {
 		return position;
 	}
+
 	public void setPosition(Integer position) {
 		this.position = position;
 	}
-	
-	
+
+	public Long getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Long addTime) {
+		this.addTime = addTime;
+	}
+
 }
