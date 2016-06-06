@@ -1,5 +1,4 @@
 var MusicTag = angular.module("MusicTag", ['ui.router', 'ui.bootstrap','ngImgCrop']);
-var Register = angular.module("Register", []);
 var getTagsUrl = "/tag/tags";
 var getSongByTagURL = "/songlistbytag";
 var getSingerUrl = "/singer/singers";
@@ -16,15 +15,6 @@ var getUpTokenURL = "/uptoken";
 //添加评论
 var addCommentUrl = "/comment"
 var getComments = "/comment/list";
-
-MusicTag.service('encryptService', function() {
-	this.encrypt = function(string) {
-		var shaObj = new jsSHA("SHA-1", "TEXT");
-		shaObj.update(string);
-		var hash = shaObj.getHash("HEX");
-		return hash;
-	}
-});
 MusicTag.service('tagService', ['$http', function($http) {
 
 	this.getTags = function() {

@@ -1,0 +1,1 @@
+var Register = angular.module("Register", ['Common']);

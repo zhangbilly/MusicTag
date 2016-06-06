@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html lang="zh-CN" ng-app="MusicTag">
+<html lang="zh-CN" ng-app="Register">
 <head>
 
 	<meta charset="utf-8">
@@ -13,10 +13,10 @@
 	<title>注册</title>
 
 	<!-- Bootstrap -->
-	<link href="${ctx}/static/bootstrap-3.3.5/css/bootstrap.min.css"
+	<link href="${ctx}/trd/bootstrap-3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
-	<link href="${ctx}/static/css/common.css" rel="stylesheet">
-	<link href="${ctx}/static/css/register.css" rel="stylesheet">
+	<link href="${ctx}/css/common.css" rel="stylesheet">
+	<link href="${ctx}/css/register.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -132,12 +132,15 @@
 	<!-- //container -->
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="${ctx}/static/jquery/jquery-2.2.0.min.js"></script>
+	<script src="${ctx}/trd/jquery/jquery-2.2.0.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-	<script src="${ctx}/static/angular-1.4.8/angular.min.js"></script>
-	<script src="${ctx}/static/js/services.js"></script>
-	<script src="${ctx}/static/js/register.js"></script>
-	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
+	<script src="${ctx}/trd/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="${ctx}/trd/angular-1.4.8/angular.min.js"></script>
+	<script src="${ctx}/js/module/register/register_app.js"></script>
+	<script src="${ctx}/js/module/register/register_controller.js"></script>
+	<script src="${ctx}/js/module/register/register_directive.js"></script>
+	<script src="${ctx}/js/module/common/common_app.js"></script>
+	<script src="${ctx}/js/module/common/encrypt_service.js"></script>
+	<script src="${ctx}/trd/jsSHA-2.0.1/sha1.js"></script>
 </body>
 </html>

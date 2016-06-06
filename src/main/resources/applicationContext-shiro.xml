@@ -25,7 +25,10 @@
 			<value>
 				/login = anon
 				/logout = logout
-				/static/** = anon
+				/css/** = anon
+				/images/** = anon
+				/js/** = anon
+				/trd/** = anon
 				/api/** = anon
 				/register/** = anon
 				/admin/** = roles[admin]

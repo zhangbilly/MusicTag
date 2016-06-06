@@ -17,9 +17,9 @@
 	<title>登录页</title>
 
 	<!-- Bootstrap -->
-	<link href="${ctx}/static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${ctx}/static/css/common.css" rel="stylesheet">
-	<link href="${ctx}/static/css/login.css" rel="stylesheet">
+	<link href="${ctx}/trd/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${ctx}/css/common.css" rel="stylesheet">
+	<link href="${ctx}/css/login.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,17 +83,17 @@
 	<!-- //container -->
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="${ctx}/static/jquery/jquery-2.2.0.min.js"></script>
+	<script src="${ctx}/trd/jquery/jquery-2.2.0.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="${ctx}/static/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-	<script src="${ctx}/static/angular-1.4.8/angular.min.js"></script>
-	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
-	<script src="${ctx}/static/angular-ui/ui-bootstrap-1.2.4.min.js"></script>
-	<script src="${ctx}/static/js/services.js"></script>
-	<script src="${ctx}/static/angular-ui/angular-ui-router.js"></script>
-	<script src="${ctx}/static/js/login.js"></script>
-	<script src="${ctx}/static/jsSHA-2.0.1/sha1.js"></script>
+	<script src="${ctx}/trd/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="${ctx}/trd/angular-1.4.8/angular.min.js"></script>
+	<script src="${ctx}/trd/angular-ui/angular-ui-router.js"></script>
+	<script src="${ctx}/trd/angular-ui/ui-bootstrap-1.2.4.min.js"></script>
+	<script src="${ctx}/js/services.js"></script>
+	<script src="${ctx}/trd/angular-ui/angular-ui-router.js"></script>
+	<script src="${ctx}/js/login.js"></script>
+	<script src="${ctx}/trd/jsSHA-2.0.1/sha1.js"></script>
 	<!-- 截图-->
-	<script src="${ctx}/static/trd/ngImgCrop/ng-img-crop.js"></script>
+	<script src="${ctx}/trd/ngImgCrop/ng-img-crop.js"></script>
 </body>
 </html>
